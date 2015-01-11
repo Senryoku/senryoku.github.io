@@ -1,0 +1,105 @@
+body
+{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	
+	background-color: black;
+	color: white;
+	
+	max-width: 1000px;
+	margin: auto;
+}
+
+code
+{
+	overflow: auto !important; /* 'Bugfix' (aka: I don't understand what's happening.) */
+}
+
+a
+{
+	color: #A0A0A0;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #FFFFFF;
+}
+
+/****************************************************************
+* Navbar */
+
+#NavBar
+{
+	display: block;
+	list-style-type: none
+}
+
+#NavBar ol
+{
+	display: inline-block;
+	padding: 1em;
+	margin: 0;
+	
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
+	transition: background 0.4s;
+}
+
+#NavBar ol:hover
+{
+	background: #151515;
+	
+	transition: background 0.4s;
+}
+
+#NavBar ol.selected
+{
+	background: #191919;
+	position: relative;
+	top: 1px; /* Hide underlying content border */
+	
+	font-weight: bold;
+	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #A0A0A0;
+	border-bottom-style: none;
+}
+
+#NavBar ol.selected:hover
+{
+}
+
+/****************************************************************/
+
+content
+{
+	background: #191919;
+	display: block;
+	margin: auto;
+	padding: 1em;
+	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #A0A0A0;
+}
+
+figure
+{
+	width: 80%;
+	display: block;
+	margin: auto;
+}
+
+figure > *
+{
+	width: 100%;
+	display: block;
+	margin: auto;
+}
+
+footer
+{
+	text-align: center;
+}
