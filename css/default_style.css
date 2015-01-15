@@ -34,26 +34,33 @@ a:hover
 	list-style-type: none
 }
 
-#NavBar ol
+#NavBar ul
+{
+	display: inline-block;
+	margin: 0;
+	width: 100%;
+}
+
+#NavBar li
 {
 	display: inline-block;
 	padding: 1em;
 	margin: 0;
 	
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 	
 	transition: background 0.4s;
 }
 
-#NavBar ol:hover
+#NavBar li:hover
 {
 	background: #151515;
 	
 	transition: background 0.4s;
 }
 
-#NavBar ol.selected
+#NavBar li.selected
 {
 	background: #191919;
 	position: relative;
@@ -67,7 +74,7 @@ a:hover
 	border-bottom-style: none;
 }
 
-#NavBar ol.selected:hover
+#NavBar li.selected:hover
 {
 }
 
@@ -83,6 +90,8 @@ content
 	border-width: 1px;
 	border-style: solid;
 	border-color: #A0A0A0;
+	
+	border-radius: 8px;
 }
 
 figure
@@ -90,6 +99,7 @@ figure
 	width: 80%;
 	display: block;
 	margin: auto;
+	padding: 10px;
 }
 
 figure > *

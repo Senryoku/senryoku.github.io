@@ -10,27 +10,37 @@
 		<header>
 			<h1>Sen's Homepage</h1>
 			<div id="NavBar">
-				<li>
-					<a href="index.html"><ol class="selected">Home</ol></a>
-					<a href="https://github.com/Senryoku/" ><ol><img src="data/img/GitHub-Mark-Light-32px.png" style="height:15px; padding-right:5px" />GitHub</ol></a>
-				</li>
+				<ul>
+					<a href="index.html"><li class="selected">Home</li></a>
+					<a href="https://github.com/Senryoku/" ><li><img src="data/img/GitHub-Mark-Light-32px.png" style="height:15px; padding-right:5px" />GitHub</li></a>
+				</ul>
 			</div>
 		</header>
         
 		<content>
+			<h2>Welcome!</h2>
+			Here is my (Sen's) little homepage, where you can find some informations about me and my projects (not much, this is still really a Work in Progress). I'm a French programmer interested mostly in game development and rendering.
 		
 			<h2>Personal Projects</h2>
 
 			<h3>OpenGL Experiments</h3>
 
 			<p>
-				<a href="https://github.com/Senryoku/OpenGL_Toolbox">Repository</a>
+				Learning OpenGL the modern way! I leave here my takes at some rendering (or just OpenGL related) techniques. Examples:
+				<ul>
+					<li>Forward Rendering and some post processing ("God Rays").</li>
+					<li>Deferred Rendering and optimizations (Tiled Lightning using a compute shader).</li>
+					<li>Raymarching and raytracing in fragment shader.</li>
+					<li>Physical animation (simple particles, <a href="http://en.wikipedia.org/wiki/Shallow_water_equations">shallow water</a> (<a href="http://en.wikipedia.org/wiki/1-D_Saint_Venant_equation">Saint Venant equation</a>)...)</li>
+				</ul>
+				... among others. This is just meant to be a way for me to learn these techniques.
+				<a href="https://github.com/Senryoku/OpenGL_Toolbox">More informations/Repository</a>
 			</p>
 
 			<a href="data/img/DeferredRendering/Particles250.png">			
 				<figure>
 					<img src="data/img/DeferredRendering/Particles250.png" alt="Deferred Rendering" />
-					<figcaption>250 particles used as light sources</figcaption>
+					<figcaption>250 particles used as light sources (~120 FPS using a Radeon HD 5870, with a really suboptimal data structure)</figcaption>
 				</figure>
 			</a>
 			
@@ -44,6 +54,7 @@
 			<h3>SenOGL</h3>
 
 			<p>
+				Little library wrapping OpenGL object and functionality. This is intended for personal use and in early stage so I can't recommend its use (also, I'm not satisfied with the current API, it may change significantly).
 				<a href="https://github.com/Senryoku/SenOGL">Repository</a>
 			</p>
 
@@ -57,14 +68,14 @@
 			<h3>Jump'n'run</h3>
 			
 			<p>
-				2D plateform game done in team with <a href="https://github.com/posva">Posva</a> during the 2st year of college. We both touched pretty much every piece of the program, but I mostly worked on the physics engine and the level editor.
-				<a href="https://github.com/Senryoku/jump-n-run">Repository</a>
+				2D platform game done in team with <a href="https://github.com/posva">Posva</a> during the 2st year of college. We both touched pretty much every piece of the program, but I mostly worked on the physics engine and the level editor.
+				<a href="https://github.com/Senryoku/jump-n-run">More informations/Repository</a>
 			</p>	
 			
 			<a href="data/img/JumpNRun_LevelEditor.png">
 				<figure>
 					<img src="data/img/JumpNRun_LevelEditor.png" alt="Jump'n'Run" />
-					<figcaption>Level editor</figcaption>
+					<figcaption>Jump'n'Run level editor</figcaption>
 				</figure>
 			</a>
 		
