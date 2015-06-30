@@ -20,7 +20,9 @@
 		<content>
 			<h2>Welcome!</h2>
 			Here is my (Sen's) little homepage, where you can find some informations about me and my projects (not much, this is still really a Work in Progress). I'm a French programmer interested mostly in game development and rendering.
-		
+
+			<hr \>
+
 			<h2>Personal Projects</h2>
 
 			<h3>OpenGL Experiments</h3>
@@ -36,20 +38,48 @@
 				... among others. This is just meant to be a way for me to learn these techniques.
 				<a href="https://github.com/Senryoku/OpenGL_Toolbox">More informations/Repository</a>
 			</p>
-
-			<a href="data/img/DeferredRendering/Particles250.png">			
-				<figure>
-					<img src="data/img/DeferredRendering/Particles250.png" alt="Deferred Rendering" />
-					<figcaption>250 particles used as light sources (~120 FPS using a Radeon HD 5870)</figcaption>
-				</figure>
-			</a>
 			
-			<a href="data/img/DeferredRendering/TiledShading.png">
-				<figure>
-					<img src="data/img/DeferredRendering/TiledShading.png" alt="Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)" />
-					<figcaption>Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)</figcaption>
-				</figure>
-			</a>
+			<ul style="list-style-type:none">
+				<li>
+					<a href="data/img/DeferredRendering/PBR.png">			
+						<figure>
+							<img src="data/img/DeferredRendering/PBR.png" alt="Sponza model in a Deferred rendering engine with PBR shading and VSM." />
+							<figcaption>Sponza model in a Deferred rendering engine with PBR shading and VSM (~330FPS / 3ms per frame with a GTX970).</figcaption>
+						</figure>
+					</a>
+				</li>
+				
+				<li>
+					<a href="data/img/DeferredRendering/Particles250_2.png">			
+						<figure>
+							<img src="data/img/DeferredRendering/Particles250_2.png" alt="Deferred Rendering" />
+							<figcaption>250 particles used as light sources (simple phong shading) and some raytracing for the particules (~500 FPS with a GTX970).</figcaption>
+						</figure>
+					</a>
+				</li>
+
+				<label class="collapse" for="_1">➤ Click to show some more screenshots...</label>
+				<input id="_1" type="checkbox">
+				<div>
+					<li>
+						<a href="data/img/DeferredRendering/Particles250.png">			
+							<figure>
+								<img src="data/img/DeferredRendering/Particles250.png" alt="Deferred Rendering" />
+								<figcaption>Another view of the (almost) same scene (~120 FPS using a Radeon HD 5870).</figcaption>
+							</figure>
+						</a>
+					</li>
+					
+					<li>
+						<a href="data/img/DeferredRendering/TiledShading.png">
+							<figure>
+								<img src="data/img/DeferredRendering/TiledShading.png" alt="Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)" />
+								<figcaption>Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)</figcaption>
+							</figure>
+						</a>
+					</li>
+				</div>
+			</ul>
 			
 			<h3>SenOGL</h3>
 
@@ -57,7 +87,15 @@
 				Little library wrapping OpenGL object and functionality. This is intended for personal use and in early stage so I can't recommend its use (also, I'm not satisfied with the current API, it may change significantly).
 				<a href="https://github.com/Senryoku/SenOGL">Repository</a>
 			</p>
-
+			
+			<hr \>
+			
+			<h2>Professional experience</h2>
+			
+			I worked on some mobile games using <a href="https://unity3d.com/">Unity</a> at <a href="http://www.artefacts-studio.fr/">Artefacts Studio</a>, including <a href="https://play.google.com/store/apps/details?id=com.microids.google.garfieldkart">Garfield Kart</a> and <a href="https://play.google.com/store/apps/details?id=com.bulkypix.gus">Gus (Yellowbird)</a> in 2013 and 2014 respectively. It was mainly Gameplay and (Game Designers') Tools work, with some shader writing.
+			
+			<hr \>
+			
 			<h2>University projects</h2>
 
 			<h3>Cyaprana</h3>
