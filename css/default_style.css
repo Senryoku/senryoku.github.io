@@ -25,42 +25,47 @@ a:hover
 	color: #FFFFFF;
 }
 
+#Links
+{
+	display: inline;
+	float: right;
+}
+
+#Links ul
+{
+	display: inline-block;
+	list-style-type: none;
+}
+
+#Links li
+{
+}
+
 /****************************************************************
 * Navbar */
 
-#NavBar
+label.NavBar
 {
-	display: block;
-	list-style-type: none
-}
-
-#NavBar ul
-{
-	display: inline-block;
-	margin: 0;
-	width: 100%;
-}
-
-#NavBar li
-{
+	background: #141414;
 	display: inline-block;
 	padding: 1em;
 	margin: 0;
+	margin-left: 5px;
 	
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	
-	transition: background 0.4s;
+	transition: background 0.3s;
 }
 
-#NavBar li:hover
+label.NavBar:hover
 {
-	background: #151515;
+	background: #292929;
 	
-	transition: background 0.4s;
+	transition: background 0.3s;
 }
 
-#NavBar li.selected
+input.NavBarInput:checked + label
 {
 	background: #191919;
 	position: relative;
@@ -74,13 +79,18 @@ a:hover
 	border-bottom-style: none;
 }
 
-#NavBar li.selected:hover
+input.NavBarInput
 {
+	display: none;
 }
 
 /****************************************************************/
 
-content
+header
+{
+}
+
+div.content
 {
 	background: #191919;
 	display: block;
@@ -92,6 +102,32 @@ content
 	border-color: #A0A0A0;
 	
 	border-radius: 8px;
+}
+
+div.content > div
+{
+	display: none;
+	/*
+    z-index: 1;
+	opacity: 0;
+    transition: all linear 0.1s;
+	position: relative;
+	top: 0;
+	left: 0;
+	padding: 10px 40px;
+	*/
+}
+
+#Home:checked ~ .content #HomeContent,
+#Projects:checked ~ .content #ProjectsContent,
+#CV:checked ~ .content #CVContent
+{
+	display: block;
+	/*
+    z-index: 100;
+	opacity: 1;
+    transition: all ease-out 0.2s 0.1s;
+	*/
 }
 
 figure
