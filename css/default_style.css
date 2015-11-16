@@ -114,6 +114,14 @@ div.content > div
 	transition: visibility 0s, opacity 0.4s linear;
 }
 
+div.content > div > img
+{
+	display:block; 
+	margin:auto; 
+	border-radius: 8px;
+	box-shadow: 0 1px 5px #000000;
+}
+
 #Home:checked ~ .content #HomeContent,
 #Projects:checked ~ .content #ProjectsContent,
 #Experience:checked ~ .content #ExperienceContent
@@ -136,7 +144,12 @@ figure > *
 	max-width: 100%;
 	display: block;
 	margin: auto;
+}
+
+figure > img
+{
 	border-radius: 8px;
+	box-shadow: 0 1px 5px #000000;
 }
 
 footer
