@@ -7,8 +7,6 @@
         <title>Sen's Homepage</title>
     </head>
     <body>
-
-		
 		<header>
 			<h1>Sen's Homepage</h1>
 		</header>
@@ -17,13 +15,16 @@
 		<label class="NavBar" for="Home">Home</label>
 		<input id="Projects" class="NavBarInput" type="radio" name="NavBarTabs">
 		<label class="NavBar" for="Projects">Projects</label>
-		<input id="CV" class="NavBarInput" type="radio" name="NavBarTabs">
-		<label class="NavBar" for="CV">CV</label>
+		<input id="Experience" class="NavBarInput" type="radio" name="NavBarTabs">
+		<label class="NavBar" for="Experience">Experience</label>
 		
 		<div id="Links">
 			<ul>
 				<li>
-					<a href="https://github.com/Senryoku/" ><img src="data/img/GitHub-Mark-Light-32px.png" style="height:15px; padding-right:5px" />GitHub</a>
+					<a href="https://github.com/Senryoku/" ><img src="data/img/GitHub-Mark-Light-32px.png" style="height:25px; padding:5px; vertical-align:middle" />GitHub</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/Senryoku_" ><img src="data/img/TwitterLogo.png" style="height:25px; padding:5px; vertical-align:middle" />Twitter</a>
 				</li>
 			</ul>
 		</div>
@@ -33,10 +34,14 @@
 				<h2>Welcome!</h2>
 				<p>
 					Here is my (Sen's) little homepage, where you can find some informations about me and my projects (not much, this is still really a Work in Progress). I'm a French programmer interested mostly in game development and rendering.
+					Use the tabs to learn more!
 				</p>
+				
+				<hr \>
+				<img src="data/img/DeferredRendering/VHD_mini.png" alt="Sponza model in a recent iteration of my Deferred rendering engine." style="display:block; margin:auto; border-radius: 8px;" />
 			</div>
 				
-			<div id="CVContent">
+			<div id="ExperienceContent">
 				<h2>Professional experience</h2>
 				
 				<p>
@@ -46,14 +51,34 @@
 				<h2>Educational</h2>
 				
 				<p>
+					Licence in Informatics at Université Claude Bernard (Lyon I).
 					See my University Projects in the Projects tab.
 				</p>
 			</div>
 			
 			<div id="ProjectsContent">
+				Here you will find some informations about projects I contributed to:
+				<ul>
+					<li>
+						Personal Projects
+						<ul>
+							<li><a href="#OpenGLExperiments">OpenGL Experiments</a> : Learning material</li>
+							<li><a href="#SenOGL">SenOGL</a> : OpenGL Wrapper</li>
+							<li><a href="#SenBoy">SenBoy</a> : GameBoy Emulator</li>
+						</ul>
+					</li>
+					<li>
+						University Projects
+						<ul>
+							<li><a href="#Cyaprana">Cyaprana</a> : Ball collecting robot</li>
+							<li><a href="#JumpNRun">JumpNRun</a> : Platform game</li>
+						</ul>
+					</li>
+				</ul>
+				
 				<h2>Personal Projects</h2>
-
-				<h3>OpenGL Experiments</h3>
+				
+				<h3 id="OpenGLExperiments">OpenGL Experiments</h3>
 
 				<p>
 					Learning OpenGL the modern way! I leave here my takes at some rendering (or just OpenGL related) techniques. Examples:
@@ -64,7 +89,7 @@
 						<li>Physical animation (simple particles, buoyancy, <a href="http://en.wikipedia.org/wiki/Shallow_water_equations">shallow water</a> (<a href="http://en.wikipedia.org/wiki/1-D_Saint_Venant_equation">Saint Venant equation</a>)... See this <a href="https://www.youtube.com/watch?v=OqNeKwgqEb8">short video</a>)</li>
 					</ul>
 					... among others. This is just meant to be a way for me to learn these techniques.<br />
-					See here for some code samples: <a href="https://github.com/Senryoku/Engine2">Current engine repository</a> ; <a href="https://github.com/Senryoku/OpenGL_Toolbox">Some old experiments</a>.
+					See here for some code samples: <a href="https://github.com/Senryoku/Engine2">Current engine repository</a> and <a href="https://github.com/Senryoku/OpenGL_Toolbox">Some older experiments</a>.
 				</p>
 				
 				Some screenshots (Click on any of them for a larger version):
@@ -128,14 +153,14 @@
 					</div>
 				</ul>
 				
-				<h3>SenOGL</h3>
+				<h3 id="SenOGL">SenOGL</h3>
 
 				<p>
 					Little library wrapping OpenGL object and functionality. This is intended for personal use and in early stage so I can't recommend its use (also, I'm not satisfied with the current API, it may change significantly).
 					<a href="https://github.com/Senryoku/SenOGL">Repository</a>
 				</p>
 				
-				<h3>SenBoy</h3>
+				<h3 id="SenBoy">SenBoy</h3>
 				
 				<p>
 					A basic GameBoy/GameBoy Color emulator. More details on the <a href="https://github.com/Senryoku/SenBoy">GitHub repository</a>.
@@ -182,12 +207,12 @@
 			
 				<h2 id="UniversityProjects">University projects</h2>
 
-				<h3>Cyaprana</h3>
+				<h3 id="Cyaprana">Cyaprana</h3>
 
-				Robotics project with 7 other students. I worked on video analysis (3D tracking) with OpenCV, data coming from up to 5 cameras.
+				Robotics project in first year of master's degree with 7 other students. I worked on video analysis (3D tracking) with OpenCV, data coming from up to 5 cameras.
 				<a href="http://cyaprana.chez.com/">More informations</a> (in French).
 
-				<h3>Jump'n'run</h3>
+				<h3 id="JumpNRun">Jump'n'run</h3>
 				
 				<p>
 					2D platform game done in team with <a href="https://github.com/posva">Posva</a> during the 2st year of college. We both touched pretty much every piece of the program, but I mostly worked on the physics engine and the level editor.

@@ -28,17 +28,17 @@ a:hover
 #Links
 {
 	display: inline;
-	float: right;
 }
 
 #Links ul
 {
-	display: inline-block;
+	display: inline;
 	list-style-type: none;
 }
 
 #Links li
 {
+	display: inline;
 }
 
 /****************************************************************
@@ -46,11 +46,11 @@ a:hover
 
 label.NavBar
 {
-	background: #141414;
+	background: #171717;
 	display: inline-block;
 	padding: 1em;
 	margin: 0;
-	margin-left: 5px;
+	margin-left: 10px;
 	
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -94,7 +94,7 @@ div.content
 {
 	background: #191919;
 	display: block;
-	margin: auto;
+	margin: 0;
 	padding: 1em;
 	
 	border-width: 1px;
@@ -102,32 +102,25 @@ div.content
 	border-color: #A0A0A0;
 	
 	border-radius: 8px;
+	transition: height 0.5s;
 }
 
 div.content > div
 {
-	display: none;
-	/*
-    z-index: 1;
+	visibility: hidden;
 	opacity: 0;
-    transition: all linear 0.1s;
-	position: relative;
-	top: 0;
-	left: 0;
-	padding: 10px 40px;
-	*/
+	height: 0;
+	overflow: hidden;
+	transition: visibility 0s, opacity 0.4s linear;
 }
 
 #Home:checked ~ .content #HomeContent,
 #Projects:checked ~ .content #ProjectsContent,
-#CV:checked ~ .content #CVContent
+#Experience:checked ~ .content #ExperienceContent
 {
-	display: block;
-	/*
-    z-index: 100;
+	visibility: visible;
+	height: auto;
 	opacity: 1;
-    transition: all ease-out 0.2s 0.1s;
-	*/
 }
 
 figure
@@ -143,6 +136,7 @@ figure > *
 	max-width: 100%;
 	display: block;
 	margin: auto;
+	border-radius: 8px;
 }
 
 footer
