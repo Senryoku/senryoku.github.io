@@ -82,18 +82,20 @@
 
 				<p>
 					Learning OpenGL the modern way! I leave here my takes at some rendering (or just OpenGL related) techniques. Examples:
-					<ul>
-						<li>Forward Rendering and some post processing ("God Rays").</li>
-						<li>Deferred Rendering and optimizations (Tiled Lightning using a compute shader).</li>
-						<li>Raymarching and raytracing in fragment shader (Combined with other thechniques, or not! Take a look at my <a href="https://www.shadertoy.com/user/Senryoku">ShaderToy profile</a>).</li>
-						<li>Physical animation (simple particles, buoyancy, <a href="http://en.wikipedia.org/wiki/Shallow_water_equations">shallow water</a> (<a href="http://en.wikipedia.org/wiki/1-D_Saint_Venant_equation">Saint Venant equation</a>)... See this <a href="https://www.youtube.com/watch?v=OqNeKwgqEb8">short video</a>)</li>
-					</ul>
+				</p>
+				<ul>
+					<li>Forward Rendering and some post processing ("God Rays").</li>
+					<li>Deferred Rendering and optimizations (Tiled Lightning using a compute shader).</li>
+					<li>Raymarching and raytracing in fragment shader (Combined with other thechniques, or not! Take a look at my <a href="https://www.shadertoy.com/user/Senryoku">ShaderToy profile</a>).</li>
+					<li>Physical animation (simple particles, buoyancy, <a href="http://en.wikipedia.org/wiki/Shallow_water_equations">shallow water</a> (<a href="http://en.wikipedia.org/wiki/1-D_Saint_Venant_equation">Saint Venant equation</a>)... See this <a href="https://www.youtube.com/watch?v=OqNeKwgqEb8">short video</a>)</li>
+				</ul>
+				<p>
 					... among others. This is just meant to be a way for me to learn these techniques.<br />
 					See here for some code samples: <a href="https://github.com/Senryoku/Engine2">Current engine repository</a> and <a href="https://github.com/Senryoku/OpenGL_Toolbox">Some older experiments</a>.
 				</p>
 				
 				Some screenshots (Click on any of them for a larger version):
-				<ul style="list-style-type:none">
+				<ul class="FigureList">
 					<li>
 						<a href="data/img/DeferredRendering/VHD.png">
 							<figure>
@@ -111,46 +113,45 @@
 							</figure>
 						</a>
 					</li>
-
-					<label class="collapse" for="_1">➤ Click to show some more screenshots...</label>
-					<input id="_1" type="checkbox">
-					<div>
-						<li>
-							<a href="data/img/DeferredRendering/HDR.png">			
-								<figure>
-									<img src="data/img/DeferredRendering/HDR_mini.png" alt="Another view of the Sponza model." />
-									<figcaption>Another view of the Sponza model.</figcaption>
-								</figure>
-							</a>
-						</li>
+				</ul>
+				<label class="collapse" for="_1">➤ Click to show some more screenshots...</label>
+				<input id="_1" type="checkbox">
+				<ul class="FigureList">
+					<li>
+						<a href="data/img/DeferredRendering/HDR.png">			
+							<figure>
+								<img src="data/img/DeferredRendering/HDR_mini.png" alt="Another view of the Sponza model." />
+								<figcaption>Another view of the Sponza model.</figcaption>
+							</figure>
+						</a>
+					</li>
+				
+					<li>
+						<a href="data/img/DeferredRendering/PBR.png">			
+							<figure>
+								<img src="data/img/DeferredRendering/PBR_mini.png" alt="Sponza model in a Deferred rendering engine with PBR shading and VSM." />
+								<figcaption>Sponza model in a Deferred rendering engine with PBR shading and VSM (~330FPS / 3ms per frame with a GTX970).</figcaption>
+							</figure>
+						</a>
+					</li>
+				
+					<li>
+						<a href="data/img/DeferredRendering/Particles250.png">			
+							<figure>
+								<img src="data/img/DeferredRendering/Particles250_mini.png" alt="Deferred Rendering" />
+								<figcaption>Another view of the (almost) same scene (~120 FPS using a Radeon HD 5870).</figcaption>
+							</figure>
+						</a>
+					</li>
 					
-						<li>
-							<a href="data/img/DeferredRendering/PBR.png">			
-								<figure>
-									<img src="data/img/DeferredRendering/PBR_mini.png" alt="Sponza model in a Deferred rendering engine with PBR shading and VSM." />
-									<figcaption>Sponza model in a Deferred rendering engine with PBR shading and VSM (~330FPS / 3ms per frame with a GTX970).</figcaption>
-								</figure>
-							</a>
-						</li>
-					
-						<li>
-							<a href="data/img/DeferredRendering/Particles250.png">			
-								<figure>
-									<img src="data/img/DeferredRendering/Particles250_mini.png" alt="Deferred Rendering" />
-									<figcaption>Another view of the (almost) same scene (~120 FPS using a Radeon HD 5870).</figcaption>
-								</figure>
-							</a>
-						</li>
-						
-						<li>
-							<a href="data/img/DeferredRendering/TiledShading.png">
-								<figure>
-									<img src="data/img/DeferredRendering/TiledShading_mini.png" alt="Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)" />
-									<figcaption>Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)</figcaption>
-								</figure>
-							</a>
-						</li>
-					</div>
+					<li>
+						<a href="data/img/DeferredRendering/TiledShading.png">
+							<figure>
+								<img src="data/img/DeferredRendering/TiledShading_mini.png" alt="Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)" />
+								<figcaption>Tiled shading using a Compute Shader (~160 FPS, 250 point lights, using a Radeon HD 5870)</figcaption>
+							</figure>
+						</a>
+					</li>
 				</ul>
 				
 				<h3 id="SenOGL">SenOGL</h3>
@@ -170,39 +171,39 @@
 					<li>
 						<a href="data/img/SenBoy/SenBoy_Zelda_0.png">
 							<figure>
-								<img height="300px" src="data/img/SenBoy/SenBoy_Zelda_0.png" alt="The Legend of Zelda: Link's Awakening running in SenBoy" />
+								<img height="300" src="data/img/SenBoy/SenBoy_Zelda_0.png" alt="The Legend of Zelda: Link's Awakening running in SenBoy" />
 								<figcaption>The Legend of Zelda: Link's Awakening running in SenBoy</figcaption>
 							</figure>
 						</a>
 					</li>
-					<label class="collapse" for="_2">➤ Click to show some more screenshots...</label>
-					<input id="_2" type="checkbox">
-					<div>
-						<li>
-							<a href="data/img/SenBoy/SenBoy_Kirby_0.png">
-								<figure>
-									<img src="data/img/SenBoy/SenBoy_Kirby_0.png" alt="Kirby's Dream Land running in SenBoy" />
-									<figcaption>Kirby's Dream Land running in SenBoy</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li>
-							<a href="data/img/SenBoy/SenBoy_PokemonCrystal_0.png">
-								<figure>
-									<img src="data/img/SenBoy/SenBoy_PokemonCrystal_0.png" alt="Pokemon Crystal running in SenBoy" />
-									<figcaption>Pokemon Crystal running in SenBoy</figcaption>
-								</figure>
-							</a>
-						</li>
-						<li>
-							<a href="data/img/SenBoy/SenBoy_Debug_0.png">
-								<figure>
-									<img src="data/img/SenBoy/SenBoy_Debug_0.png" alt="Debug view of the previous screenshot" />
-									<figcaption>Debug view of the previous screenshot</figcaption>
-								</figure>
-							</a>
-						</li>
-					</div>
+				</ul>
+				<label class="collapse" for="_2">➤ Click to show some more screenshots...</label>
+				<input id="_2" type="checkbox">
+				<ul class="FigureList">
+					<li>
+						<a href="data/img/SenBoy/SenBoy_Kirby_0.png">
+							<figure>
+								<img src="data/img/SenBoy/SenBoy_Kirby_0.png" alt="Kirby's Dream Land running in SenBoy" />
+								<figcaption>Kirby's Dream Land running in SenBoy</figcaption>
+							</figure>
+						</a>
+					</li>
+					<li>
+						<a href="data/img/SenBoy/SenBoy_PokemonCrystal_0.png">
+							<figure>
+								<img src="data/img/SenBoy/SenBoy_PokemonCrystal_0.png" alt="Pokemon Crystal running in SenBoy" />
+								<figcaption>Pokemon Crystal running in SenBoy</figcaption>
+							</figure>
+						</a>
+					</li>
+					<li>
+						<a href="data/img/SenBoy/SenBoy_Debug_0.png">
+							<figure>
+								<img src="data/img/SenBoy/SenBoy_Debug_0.png" alt="Debug view of the previous screenshot" />
+								<figcaption>Debug view of the previous screenshot</figcaption>
+							</figure>
+						</a>
+					</li>
 				</ul>
 			
 				<h2 id="UniversityProjects">University projects</h2>

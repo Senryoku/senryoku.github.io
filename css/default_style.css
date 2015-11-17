@@ -41,6 +41,11 @@ a:hover
 	display: inline;
 }
 
+.FigureList
+{
+	list-style-type: none;
+}
+
 /****************************************************************
 * Navbar */
 
@@ -180,7 +185,7 @@ footer
 	transition: opacity 1s, max-height 1s ease;
 }
 
-.collapse+ input:checked + *
+.collapse + input:checked + *
 {
 	max-height: 2000px;
 	opacity: 1;
