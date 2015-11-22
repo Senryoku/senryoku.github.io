@@ -38,7 +38,9 @@ a:hover
 
 #Links li
 {
+	padding: 1em;
 	display: inline;
+	float: right;
 }
 
 .FigureList
