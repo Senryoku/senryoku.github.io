@@ -11,7 +11,7 @@
 			<h1>Sen's Homepage</h1>
 		</header>
         		
-		<input id="Home" class="NavBarInput" type="radio" name="NavBarTabs" checked>
+		<input id="Home" class="NavBarInput NavBarInputFirst" type="radio" name="NavBarTabs" checked>
 		<label class="NavBar" for="Home">Home</label>
 		<input id="Projects" class="NavBarInput" type="radio" name="NavBarTabs">
 		<label class="NavBar" for="Projects">Projects</label>
@@ -170,19 +170,15 @@
 					A basic GameBoy/GameBoy Color emulator. More details on the <a href="https://github.com/Senryoku/SenBoy">GitHub repository</a>.
 				</p>
 				
-				<ul style="list-style-type:none">
+				<ul class="FigureList_Col2">
 					<li>
 						<a href="data/img/SenBoy/SenBoy_Zelda_0.png">
 							<figure>
-								<img height="300" src="data/img/SenBoy/SenBoy_Zelda_0.png" alt="The Legend of Zelda: Link's Awakening running in SenBoy" />
+								<img src="data/img/SenBoy/SenBoy_Zelda_0.png" alt="The Legend of Zelda: Link's Awakening running in SenBoy" />
 								<figcaption>The Legend of Zelda: Link's Awakening running in SenBoy</figcaption>
 							</figure>
 						</a>
 					</li>
-				</ul>
-				<label class="collapse" for="_2">➤ Click to show some more screenshots...</label>
-				<input id="_2" type="checkbox">
-				<ul class="FigureList">
 					<li>
 						<a href="data/img/SenBoy/SenBoy_Kirby_0.png">
 							<figure>
@@ -191,6 +187,10 @@
 							</figure>
 						</a>
 					</li>
+				</ul>
+				<label class="collapse" for="_2">➤ Click to show some more screenshots...</label>
+				<input id="_2" type="checkbox">
+				<ul class="FigureList_Col2">
 					<li>
 						<a href="data/img/SenBoy/SenBoy_PokemonCrystal_0.png">
 							<figure>

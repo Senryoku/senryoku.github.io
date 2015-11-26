@@ -14,6 +14,13 @@ code
 	overflow: auto !important; /* 'Bugfix' (aka: I don't understand what's happening.) */
 }
 
+h1
+{
+	font-size: 3em;
+	padding: 0em;
+	margin: 0.15em;
+}
+
 a
 {
 	color: #A0A0A0;
@@ -38,14 +45,9 @@ a:hover
 
 #Links li
 {
-	padding: 1em;
+	padding: 0.8em;
 	display: inline;
 	float: right;
-}
-
-.FigureList
-{
-	list-style-type: none;
 }
 
 /****************************************************************
@@ -53,11 +55,11 @@ a:hover
 
 label.NavBar
 {
-	background: #171717;
+	background: #404040;
 	display: inline-block;
-	padding: 1em;
+	padding: 0.8em;
 	margin: 0;
-	margin-left: 10px;
+	margin-left: 0px;
 	
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -67,7 +69,7 @@ label.NavBar
 
 label.NavBar:hover
 {
-	background: #292929;
+	background: #303030;
 	
 	transition: background 0.3s;
 }
@@ -84,6 +86,11 @@ input.NavBarInput:checked + label
 	border-style: solid;
 	border-color: #A0A0A0;
 	border-bottom-style: none;
+}
+
+input.NavBarInputFirst:checked ~ div.content
+{
+	border-top-left-radius: 0px;
 }
 
 input.NavBarInput
@@ -138,16 +145,42 @@ div.content > div > img
 	opacity: 1;
 }
 
-figure
+
+ul.FigureList
 {
 	width: 80%;
-	display: block;
 	margin: auto;
-	padding: 10px;
+	text-align: center;
+	list-style-type: none;
+}
+
+ul.FigureList_Col2
+{
+	width: 80%;
+	margin: auto;
+	text-align: center;
+	list-style-type:none;
+    -moz-column-count: 2;
+    -moz-column-gap: 30px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 30px;
+    column-count: 2;
+    column-gap: 30px;
+}
+
+figure
+{
+	width: 100%;
+	display: inline-block;
+	margin: auto;
+	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 figure > *
 {
+	width: 100%;
+	height: auto;
 	max-width: 100%;
 	display: block;
 	margin: auto;
@@ -157,6 +190,8 @@ figure > img
 {
 	border-radius: 8px;
 	box-shadow: 0 1px 5px #000000;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 footer
