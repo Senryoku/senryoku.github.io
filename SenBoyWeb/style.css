@@ -153,6 +153,12 @@ canvas.emscripten {
 #controls {
 }
 
+#controls span
+{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
 #output {
 	width: 100%;
 	height: 200px;
@@ -207,10 +213,10 @@ hr
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(160, 160, 160, 0.75), rgba(0, 0, 0, 0));
 }
 
-input.button {
+input[type="button"] {
     padding: 5px 10px;
     display: inline;
-    background: #777 url(button.png) repeat-x bottom;
+    background: #777;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -219,6 +225,10 @@ input.button {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     text-shadow: 1px 1px #666;
+}
+
+select + input[type="button"] {
+    padding: 1px 5px;
 }
 
 .hidden

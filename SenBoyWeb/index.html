@@ -3,22 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Emscripten-Generated Code</title>
+    <title>SenBoyWeb</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
 	<h1>SenBoyWeb</h1>
 	<div id="global_container">
 	<span id='controls'>
-		<span><input class="button" type="button" id="load-rom" value="Load ROM"><input class="hidden" type="file" id="file-input"></span>
-		<span><input class="button" type="button" id="sound-control" value="Toggle Sound"></span>
-		<span><input class="button" type="button" id="toggle-bios" value="Toggle BIOS"></span>
-		<!--
-		<span><input type="checkbox" id="resize">Resize canvas</span>
-		<span><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer</span>
-		<span><input class="button" type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
-																			document.getElementById('resize').checked)">
-		-->
+		<span>
+			<select id="dropdown-roms">
+				<option value="roms/cpu_instrs.gb">CPU Tests</option>
+				<option value="roms/GB Tic-Tac-Toe (PD) [a1].gb">GB Tic-Tac-Toe</option>
+				<option value="roms/pocket.gb">Pocket Demo</option>
+				<option value="roms/James Bond Demo (PD).gb">James Bond Demo</option>
+				<option value="roms/Witness, The (PD) [M].gb">The Witness</option>
+			</select>
+			<input type="button" id="server-roms" value="Load ROM">
+		</span>
+		<span><input type="button" id="load-rom" value="Upload ROM"><input class="hidden" type="file" id="file-input"></span>
+		<span><input type="button" id="sound-control" value="Toggle Sound"></span>
+		<span><input type="button" id="toggle-bios" value="Toggle BIOS"></span>
 		<span><input class="button" type="button" value="Fullscreen" onclick="Module.requestFullScreen(false, false)">
 		</span>
 	</span>
@@ -36,7 +40,8 @@
 	<div class="emscripten_border">
 		<div id="InfoLeft">
 			<p>
-				Load a GameBoy or GameBoy Color ROM using the above menu.
+				Load a GameBoy or GameBoy Color ROM from the dropdown list with "Load ROM" or from your own computer with "Upload ROM".<br />
+				Enjoy!
 				<br /><br />
 				Controls:<br />
 				Gamepad or with a keyboard:
