@@ -2,7 +2,7 @@ function read_server_side_file(file_path) {
 	var xhr = new XMLHttpRequest(); 
 	xhr.open("GET", file_path);
 	xhr.responseType = "blob";
-	xhr.onloadend = function()
+	xhr.onload = function()
 	{
 		var blob = xhr.response;
 	
@@ -26,7 +26,7 @@ function read_local_file(e) {
 		return;
 	}
 	var reader = new FileReader();
-	reader.onloadend = function(e) {
+	reader.onload = function(e) {
 		var contents = e.target.result;
 		var buf = Module._malloc(contents.byteLength);
 		var dataHeap = new Uint8Array(Module.HEAPU8.buffer, buf, contents.byteLength);
@@ -35,8 +35,6 @@ function read_local_file(e) {
 		Module._free(buf);
 	};
 	reader.readAsArrayBuffer(file);
-
-	read_server_side_file("pocket.gb");
 }
 
 document.getElementById('file-input')
