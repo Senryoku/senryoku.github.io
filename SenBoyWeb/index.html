@@ -74,6 +74,9 @@
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
 	  
+	  window.onblur = function () { stop_sound() };
+	  window.onfocus = function () { check_sound() };
+	  
       var Module = {
         preRun: [],
         postRun: [],
