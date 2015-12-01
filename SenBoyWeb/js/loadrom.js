@@ -2,7 +2,7 @@ function read_server_side_file(file_path) {
 	var xhr = new XMLHttpRequest(); 
 	xhr.open("GET", file_path);
 	xhr.responseType = "blob";
-	xhr.onload = function()
+	xhr.onloadend = function()
 	{
 		var blob = xhr.response;
 	
@@ -26,7 +26,7 @@ function read_local_file(e) {
 		return;
 	}
 	var reader = new FileReader();
-	reader.onload = function(e) {
+	reader.onloadend = function(e) {
 		var contents = e.target.result;
 		var buf = Module._malloc(contents.byteLength);
 		var dataHeap = new Uint8Array(Module.HEAPU8.buffer, buf, contents.byteLength);
