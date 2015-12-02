@@ -23,6 +23,7 @@
 		<span><input type="button" id="load-rom" value="Upload ROM"><input class="hidden" type="file" id="file-input"></span>
 		<span><input type="button" id="sound-control" value="Toggle Sound"></span>
 		<span><input type="button" id="toggle-bios" value="Toggle BIOS"></span>
+		<span><input type="button" id="save-ram" value="Save"></span>
 		<span><input class="button" type="button" value="Fullscreen" onclick="Module.requestFullScreen(false, false)">
 		</span>
 	</span>
@@ -30,6 +31,7 @@
 	<script type='text/javascript' src='js/loadrom.js'></script>
 	<script type='text/javascript' src='js/soundcontrol.js'></script>
 	<script type='text/javascript' src='js/bios.js'></script>
+	<script type='text/javascript' src='js/save.js'></script>
 
     <div class="emscripten">
 		<div class="spinner" id='spinner'></div>
@@ -42,10 +44,13 @@
 			<p>
 				Load a GameBoy or GameBoy Color ROM from the dropdown list with "Load ROM" or from your own computer with "Upload ROM".<br />
 				Enjoy!
-				<br /><br />
+			</p>
 				Controls:<br />
 				Gamepad or with a keyboard:
 				<ul><li>E : A</li><li>R : B</li><li>T : Select</li><li>Y : Start</li><li>Arrows : DPad</ul>
+			<p>
+				Use the <a onclick="save_ram()">Save</a> button before closing this page to ensure that your progress is correctly saved!<br />
+				<small>(Note: This only emulates the save capabilities of the loaded cartridge. It will behave as if you turned off your console, this is not a complete save state.)</small>
 			</p>
 		</div>
 		<div id="canvas_container">
@@ -57,7 +62,7 @@
 				by <a href="http://senryoku.github.io">Senryoku</a><br /><br />
 				Written in C++ and compiled to javascript via Emscripten. Based on <a href="https://github.com/Senryoku/SenBoy">SenBoy</a> v0.92.
 				<br /><br />
-				Port is far from perfect, it was merely a way to get some experience with emscripten.
+				Port is far from perfect, it was merely a way to get some experience with emscripten. 
 				<br /><br />
 				More informations: <a href="https://github.com/Senryoku/SenBoy">GitHub</a>
 			</p>
