@@ -98,10 +98,19 @@ input.NavBarInput
 	display: none;
 }
 
+#Links img
+{
+	height: 20px;
+	padding: 5px;
+	vertical-align: middle;
+}
+
 /****************************************************************/
 
-header
+header h1
 {
+	text-align: center;
+	padding: 15px;
 }
 
 div.content
