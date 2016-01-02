@@ -1,12 +1,15 @@
 body
 {
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 0.02em;
 	
 	background-color: black;
 	color: white;
 	
 	max-width: 1000px;
 	margin: auto;
+	
+	font-size: 100%;
 }
 
 code
@@ -19,6 +22,8 @@ h1
 	font-size: 3em;
 	padding: 0em;
 	margin: 0.15em;
+	
+	color: #808080;
 }
 
 a
@@ -55,9 +60,16 @@ a:hover
 
 label.NavBar
 {
-	background: #404040;
+	background-color: #404040;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, #303030 85%, #181818 100%);
+
+	text-transform: capitalize;
+    letter-spacing: 0.03em;
+	
 	display: inline-block;
 	padding: 0.8em;
+	padding-left: 1.2em;
+	padding-right: 1.2em;
 	margin: 0;
 	margin-left: 0px;
 	
@@ -69,7 +81,7 @@ label.NavBar
 
 label.NavBar:hover
 {
-	background: #303030;
+	background-color: #303030;
 	
 	transition: background 0.3s;
 }
@@ -84,7 +96,7 @@ input.NavBarInput:checked + label
 	
 	border-width: 1px;
 	border-style: solid;
-	border-color: #A0A0A0;
+	border-color: #404040;
 	border-bottom-style: none;
 }
 
@@ -109,8 +121,20 @@ input.NavBarInput
 
 header h1
 {
+	letter-spacing: 0.025em;
 	text-align: center;
 	padding: 15px;
+	text-transform: uppercase;
+}
+
+h2
+{
+	text-transform: capitalize;
+	font-size: 2em;
+	letter-spacing: 0.025em;
+	
+	padding: 0px;
+	margin: 0px;
 }
 
 div.content
@@ -118,12 +142,12 @@ div.content
 	background: #191919;
 	display: block;
 	margin: 0;
-	padding: 1em;
+	padding: 2em;
 	
 	border-width: 1px;
 	border-style: solid;
-	border-color: #A0A0A0;
-	
+	border-color: #404040;
+		
 	border-radius: 8px;
 	transition: height 0.5s;
 }
@@ -201,6 +225,11 @@ figure > img
 	box-shadow: 0 1px 5px #000000;
 	max-width: 100%;
 	max-height: 100%;
+}
+
+figcaption
+{
+	margin: 5px;
 }
 
 footer
