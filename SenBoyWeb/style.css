@@ -248,7 +248,7 @@ select + input[type="button"] {
 	text-align: center;
 }
 
-.inputs .dir {
+input[type="button"].dir {
 	border-radius: 0px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
@@ -258,7 +258,7 @@ select + input[type="button"] {
 	margin-right: 2.5em;
 }
 
-.inputs .button {
+input[type="button"].gbbutton {
     border-radius: 3em;
     -moz-border-radius: 3em;
     -webkit-border-radius: 3em;
@@ -268,12 +268,40 @@ select + input[type="button"] {
 	margin-top: 4em;
 }
 
-#Gameboy_Start, #Gameboy_Select {
-	padding: 0;
+input[type="button"].startselect {
+	padding: 1em;
 	margin: 10px;
 	width: 8em;
 	height: 4em;
     border-radius: 2em;
     -moz-border-radius: 2em;
     -webkit-border-radius: 2em;
+}
+
+#gameboy {
+	width: 100%;
+	height: 100%;
+	
+	position: relative;
+	vertical-align:middle;
+}
+
+.fullscreen_inputs {
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.fullscreen_inputs.input_left {
+	left: 2em;
+}
+
+.fullscreen_inputs.input_right {
+	right: 3em;
+}
+
+.fullscreen_inputs.input_bottom {
+	top: auto;
+	bottom: 3em;
 }
