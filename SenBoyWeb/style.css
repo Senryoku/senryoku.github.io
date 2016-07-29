@@ -129,9 +129,11 @@ canvas.emscripten {
 }
 
 #InfoLeft {
+	position: relative;
 	float: left;
 	text-align: left;
 	width: calc(50% - 250px);
+	height: 500px;
 }
 
 #InfoLeft p
@@ -140,9 +142,11 @@ canvas.emscripten {
 }
 
 #InfoRight {
+	position: relative;
 	float: right;
 	text-align: right;
 	width: calc(50% - 250px);
+	height: 500px;
 }
 
 #InfoRight p
@@ -234,4 +238,42 @@ select + input[type="button"] {
 .hidden
 {
 	display:none;
+}
+
+.inputs {
+	width: 100%;
+	position: absolute;
+	top: 150px;
+	
+	text-align: center;
+}
+
+.inputs .dir {
+	    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+	width: 4em;
+	height: 4em;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.inputs .button {
+    border-radius: 2em;
+    -moz-border-radius: 2em;
+    -webkit-border-radius: 2em;
+	width: 4em;
+	height: 4em;
+	margin-left: 2em;
+	margin-top: 4em;
+}
+
+#Gameboy_Start, #Gameboy_Select {
+	padding: 0;
+	margin: 10px;
+	width: 6em;
+	height: 2em;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
 }

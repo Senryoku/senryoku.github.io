@@ -45,31 +45,52 @@
 				Load a GameBoy or GameBoy Color ROM from the dropdown list with "Load ROM" or from your own computer with "Upload ROM".<br />
 				Enjoy!
 			</p>
+			<div class="inputs">
+				<input type="button" class="dir" id="Gameboy_Up" onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="Up">
+				<br />
+				<input type="button" class="dir" id="Gameboy_Left" onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="Left">
+				<input type="button" class="dir" id="Gameboy_Right" onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="Right">
+				<br />
+				<input type="button" class="dir" id="Gameboy_Down" onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="Down">
+			</div>
+			
+			<div style="position: absolute; bottom: 0px">
 				Controls:<br />
 				Gamepad or with a keyboard:
 				<ul><li>E : A</li><li>R : B</li><li>T : Select</li><li>Y : Start</li><li>Arrows : DPad</ul>
-			<p>
-				Use the <a onclick="save_ram()">Save</a> button before closing this page to ensure that your progress is correctly saved!<br />
-				<small>(Note: This only emulates the save capabilities of the loaded cartridge. It will behave as if you turned off your console, this is not a complete save state.)</small>
-			</p>
+			</div>
 		</div>
 		<div id="canvas_container">
 			<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+			<div>
+				<input type="button" id="Gameboy_Start" onmousedown="simulateKeyEvent('keydown', 89, 'Y')" onmouseup="simulateKeyEvent('keyup', 89, 'Y')" value="Start">
+				<input type="button" id="Gameboy_Select" onmousedown="simulateKeyEvent('keydown', 84, 'T')" onmouseup="simulateKeyEvent('keyup', 84, 'T')" value="Select">
+			</div>
 		</div>
 		<div id="InfoRight">
 			<p>
 				GameBoy emulator<br />
-				by <a href="http://senryoku.github.io">Senryoku</a><br /><br />
+				by <a href="http://senryoku.github.io">Senryoku</a>
+			</p>
+			
+			<div class="inputs">
+				<input type="button" class="button" id="Gameboy_A" onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
+				<input type="button" class="button" id="Gameboy_B" onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
+			</div>
+			
+			<p>
 				Written in C++ and compiled to javascript via Emscripten. Based on <a href="https://github.com/Senryoku/SenBoy">SenBoy</a> v0.92.
-				<br /><br />
-				Port is far from perfect, it was merely a way to get some experience with emscripten. 
-				<br /><br />
+				Port is far from perfect, it was merely a way to get some experience with emscripten.
 				More informations: <a href="https://github.com/Senryoku/SenBoy">GitHub</a>
+			</p>
+			
+			<p style="position: absolute; bottom: 0px">
+				Use the <a onclick="save_ram()">Save</a> button before closing this page to ensure that your progress is correctly saved!<br />
+				<small>(Note: This only emulates the save capabilities of the loaded cartridge. It will behave as if you turned off your console, this is not a complete save state.)</small>
 			</p>
 		</div>
 		<div style="clear:both;"></div>
     </div>
-	
 	<label class="collapse" for="_1">➤ Display console</label>
 	<input id="_1" type="checkbox">
     <textarea id="output" rows="8"></textarea>
@@ -155,6 +176,28 @@
           if (text) Module.printErr('[post-exception status] ' + text);
         };
       };
+	  
+		function simulateKeyEvent(eventType, keyCode, charCode) {
+			var e = document.createEventObject ? document.createEventObject() : document.createEvent("Events");
+			if (e.initEvent) e.initEvent(eventType, true, true);
+
+			e.keyCode = keyCode;
+			e.which = keyCode;
+			e.charCode = charCode;
+
+			// Dispatch directly to Emscripten's html5.h API (use this if page uses emscripten/html5.h event handling):
+			if (typeof JSEvents !== 'undefined' && JSEvents.eventHandlers && JSEvents.eventHandlers.length > 0) {
+				for(var i = 0; i < JSEvents.eventHandlers.length; ++i) {
+					if ((JSEvents.eventHandlers[i].target == Module['canvas'] || JSEvents.eventHandlers[i].target == window)
+						&& JSEvents.eventHandlers[i].eventTypeString == eventType) {
+						JSEvents.eventHandlers[i].handlerFunc(e);
+					}
+				}
+			} else {
+				// Dispatch to browser for real (use this if page uses SDL or something else for event handling):
+				Module['canvas'].dispatchEvent ? Module['canvas'].dispatchEvent(e) : Module['canvas'].fireEvent("on" + eventType, e);
+			}
+		}
     </script>
     <script>
 
