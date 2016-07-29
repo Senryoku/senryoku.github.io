@@ -46,36 +46,50 @@
 				Enjoy!
 			</p>
 			<div class="inputs">
-				<input type="button" class="dir" id="Gameboy_Up" onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="Up">
+				<input type="button" class="dir" id="Gameboy_Up" 
+					ontouchstart="simulateKeyEvent('keydown', 38, 0)" ontouchend="simulateKeyEvent('keyup', 38, 0)"
+					onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="Up">
 				<br />
-				<input type="button" class="dir" id="Gameboy_Left" onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="Left">
-				<input type="button" class="dir" id="Gameboy_Right" onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="Right">
+				<input type="button" class="dir" id="Gameboy_Left" 
+					ontouchstart="simulateKeyEvent('keydown', 37, 0)" ontouchend="simulateKeyEvent('keyup', 37, 0)"
+					onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="Left">
+				<input type="button" class="dir" id="Gameboy_Right" 
+					ontouchstart="simulateKeyEvent('keydown', 39, 0)" ontouchend="simulateKeyEvent('keyup', 39, 0)"
+					onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="Right">
 				<br />
-				<input type="button" class="dir" id="Gameboy_Down" onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="Down">
+				<input type="button" class="dir" id="Gameboy_Down" 
+					ontouchstart="simulateKeyEvent('keydown', 40, 0)" ontouchend="simulateKeyEvent('keyup', 40, 0)"
+					onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="Down">
 			</div>
 			
 			<div style="position: absolute; bottom: 0px">
-				Controls:<br />
-				Gamepad or with a keyboard:
+				Controls: Gamepad or with a keyboard:
 				<ul><li>E : A</li><li>R : B</li><li>T : Select</li><li>Y : Start</li><li>Arrows : DPad</ul>
 			</div>
 		</div>
 		<div id="canvas_container">
 			<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 			<div>
-				<input type="button" id="Gameboy_Start" onmousedown="simulateKeyEvent('keydown', 89, 'Y')" onmouseup="simulateKeyEvent('keyup', 89, 'Y')" value="Start">
-				<input type="button" id="Gameboy_Select" onmousedown="simulateKeyEvent('keydown', 84, 'T')" onmouseup="simulateKeyEvent('keyup', 84, 'T')" value="Select">
+				<input type="button" id="Gameboy_Select" 
+					ontouchstart="simulateKeyEvent('keydown', 84, 'T')" ontouchend="simulateKeyEvent('keyup', 84, 'T')"
+					onmousedown="simulateKeyEvent('keydown', 84, 'T')" onmouseup="simulateKeyEvent('keyup', 84, 'T')" value="Select">
+				<input type="button" id="Gameboy_Start" 
+					ontouchstart="simulateKeyEvent('keydown', 89, 'Y')" ontouchend="simulateKeyEvent('keyup', 89, 'Y')"
+					onmousedown="simulateKeyEvent('keydown', 89, 'Y')" onmouseup="simulateKeyEvent('keyup', 89, 'Y')" value="Start">
 			</div>
 		</div>
 		<div id="InfoRight">
 			<p>
-				GameBoy emulator<br />
-				by <a href="http://senryoku.github.io">Senryoku</a>
+				GameBoy emulator by <a href="http://senryoku.github.io">Senryoku</a>
 			</p>
 			
 			<div class="inputs">
-				<input type="button" class="button" id="Gameboy_A" onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
-				<input type="button" class="button" id="Gameboy_B" onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
+				<input type="button" class="button" id="Gameboy_A"
+					ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
+					 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
+				<input type="button" class="button" id="Gameboy_B"
+					ontouchstart="simulateKeyEvent('keydown', 82, 'R')" ontouchend="simulateKeyEvent('keyup', 82, 'R')"
+					 onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
 			</div>
 			
 			<p>
