@@ -220,7 +220,7 @@ hr
 input[type="button"] {
     padding: 5px 10px;
     display: inline;
-    background: #777;
+    background: #707070;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -243,39 +243,46 @@ select + input[type="button"] {
 .inputs {
 	width: 100%;
 	position: absolute;
-	top: 125px;
+	top: 105px;
 	
 	text-align: center;
+}
+
+.inputs input[type="button"]
+{
+	padding: 0;
+	font-size: 2em;
 }
 
 input[type="button"].dir {
 	border-radius: 0px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
-	width: 5em;
-	height: 5em;
-	margin-left: 2.5em;
-	margin-right: 2.5em;
+	width: 2.5em;
+	height: 2.5em;
+	margin-left: 1.25em;
+	margin-right: 1.25em;
 }
 
 input[type="button"].gbbutton {
-    border-radius: 3em;
-    -moz-border-radius: 3em;
-    -webkit-border-radius: 3em;
-	width: 6em;
-	height: 6em;
-	margin-left: 2em;
-	margin-top: 4em;
+    border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -webkit-border-radius: 1.5em;
+	width: 3em;
+	height: 3em;
+	margin-left: 1em;
+	margin-top: 2em;
 }
 
 input[type="button"].startselect {
-	padding: 1em;
+	padding: 0;
+	font-size: 2em;
 	margin: 10px;
-	width: 8em;
-	height: 4em;
-    border-radius: 2em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
+	width: 4em;
+	height: 1.5em;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
 }
 
 #gameboy {
@@ -293,15 +300,21 @@ input[type="button"].startselect {
 	transform: translateY(-50%);
 }
 
+.fullscreen_inputs input[type="button"] {
+	padding: 0;
+	font-size: 2em;
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .fullscreen_inputs.input_left {
 	left: 2em;
 }
 
 .fullscreen_inputs.input_right {
-	right: 3em;
+	right: 2em;
 }
 
 .fullscreen_inputs.input_bottom {
 	top: auto;
-	bottom: 3em;
+	bottom: 2em;
 }

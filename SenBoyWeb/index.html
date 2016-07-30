@@ -47,20 +47,20 @@
 				Enjoy!
 			</p>
 			<div class="inputs">
-				<input type="button" class="dir" id="Gameboy_Up" 
+				<input type="button" class="dir" id="Gameboy_Up" style="border-radius: 0.5em 0.5em 0 0;"
 					ontouchstart="simulateKeyEvent('keydown', 38, 0)" ontouchend="simulateKeyEvent('keyup', 38, 0)"
-					onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="Up">
-				<br />
-				<input type="button" class="dir" id="Gameboy_Left" 
-					ontouchstart="simulateKeyEvent('keydown', 37, 0)" ontouchend="simulateKeyEvent('keyup', 37, 0)"
-					onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="Left">
-				<input type="button" class="dir" id="Gameboy_Right" 
-					ontouchstart="simulateKeyEvent('keydown', 39, 0)" ontouchend="simulateKeyEvent('keyup', 39, 0)"
-					onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="Right">
-				<br />
-				<input type="button" class="dir" id="Gameboy_Down" 
-					ontouchstart="simulateKeyEvent('keydown', 40, 0)" ontouchend="simulateKeyEvent('keyup', 40, 0)"
-					onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="Down">
+					onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="&#8679;">
+				<br />                                                                                                   
+				<input type="button" class="dir" id="Gameboy_Left" style="border-radius: 0.5em 0 0 0.5em;"                   
+					ontouchstart="simulateKeyEvent('keydown', 37, 0)" ontouchend="simulateKeyEvent('keyup', 37, 0)"      
+					onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="&#8678;">
+				<input type="button" class="dir" id="Gameboy_Right" style="border-radius: 0 0.5em 0.5em 0;"                  
+					ontouchstart="simulateKeyEvent('keydown', 39, 0)" ontouchend="simulateKeyEvent('keyup', 39, 0)"      
+					onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="&#8680;">
+				<br />                                                                                                   
+				<input type="button" class="dir" id="Gameboy_Down" style="border-radius: 0 0 0.5em 0.5em;"                   
+					ontouchstart="simulateKeyEvent('keydown', 40, 0)" ontouchend="simulateKeyEvent('keyup', 40, 0)"      
+					onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="&#8681;">
 			</div>
 			
 			<div style="position: absolute; bottom: 0px">
@@ -71,31 +71,31 @@
 		<div id="canvas_container">
 			<div id="gameboy">
 				<div class="fullscreen_inputs input_left">
-					<input type="button" class="dir" id="Gameboy_Up_full" 
+					<input type="button" class="dir" id="Gameboy_Up_full" style="border-radius: 0.5em 0.5em 0 0;"
 						ontouchstart="simulateKeyEvent('keydown', 38, 0)" ontouchend="simulateKeyEvent('keyup', 38, 0)"
-						onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="Up">
+						onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="&#8679;">
 					<br />
-					<input type="button" class="dir" id="Gameboy_Left_full" 
+					<input type="button" class="dir" id="Gameboy_Left_full" style="border-radius: 0.5em 0 0 0.5em;"
 						ontouchstart="simulateKeyEvent('keydown', 37, 0)" ontouchend="simulateKeyEvent('keyup', 37, 0)"
-						onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="Left">
-					<input type="button" class="dir" id="Gameboy_Right_full" 
+						onmousedown="simulateKeyEvent('keydown', 37, 0)" onmouseup="simulateKeyEvent('keyup', 37, 0)" value="&#8678;">
+					<input type="button" class="dir" id="Gameboy_Right_full" style="border-radius: 0 0.5em 0.5em 0;"
 						ontouchstart="simulateKeyEvent('keydown', 39, 0)" ontouchend="simulateKeyEvent('keyup', 39, 0)"
-						onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="Right">
+						onmousedown="simulateKeyEvent('keydown', 39, 0)" onmouseup="simulateKeyEvent('keyup', 39, 0)" value="&#8680;">
 					<br />
-					<input type="button" class="dir" id="Gameboy_Down_full" 
+					<input type="button" class="dir" id="Gameboy_Down_full" style="border-radius: 0 0 0.5em 0.5em;"
 						ontouchstart="simulateKeyEvent('keydown', 40, 0)" ontouchend="simulateKeyEvent('keyup', 40, 0)"
-						onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="Down">
+						onmousedown="simulateKeyEvent('keydown', 40, 0)" onmouseup="simulateKeyEvent('keyup', 40, 0)" value="&#8681;">
 				</div>
 				
 				<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 			
 				<div class="fullscreen_inputs input_right">
-					<input type="button" class="button gbbutton" id="Gameboy_A_full"
-						ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
-						 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
 					<input type="button" class="button gbbutton" id="Gameboy_B_full"
 						ontouchstart="simulateKeyEvent('keydown', 82, 'R')" ontouchend="simulateKeyEvent('keyup', 82, 'R')"
 						 onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
+					<input type="button" class="button gbbutton" id="Gameboy_A_full"
+						ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
+						 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
 				</div>
 				<div class="fullscreen_inputs input_right input_bottom">
 					<input type="button" class="startselect" id="Gameboy_Select_full" 
@@ -122,12 +122,12 @@
 			</p>
 			
 			<div class="inputs">
-				<input type="button" class="button gbbutton" id="Gameboy_A"
-					ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
-					 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
 				<input type="button" class="button gbbutton" id="Gameboy_B"
 					ontouchstart="simulateKeyEvent('keydown', 82, 'R')" ontouchend="simulateKeyEvent('keyup', 82, 'R')"
 					 onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
+				<input type="button" class="button gbbutton" id="Gameboy_A"
+					ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
+					 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
 			</div>
 			
 			<p>
@@ -402,6 +402,18 @@
 			}
 		});
 		
+
+		var tapedTwice = false;
+
+		function tapHandler(event) {
+			if(!tapedTwice) {
+				tapedTwice = true;
+				setTimeout( function() { tapedTwice = false; }, 300 );
+				return false;
+			}
+			event.preventDefault();
+		}
+ 
 		var fullscreen_inputs = document.getElementsByClassName("fullscreen_inputs");
 
 		if (screenfull.enabled) {
@@ -412,6 +424,10 @@
 				}
 				canvas.style.width = screenfull.isFullscreen ? "auto" : "500px";
 				canvas.style.height = screenfull.isFullscreen ? "100%" : "auto";
+				if(screenfull.isFullscreen)
+					fullscreen_elem.addEventListener("touchstart", tapHandler);
+				else
+					fullscreen_elem.removeEventListener("touchstart", tapHandler);
 			});
 		}
 		
@@ -421,10 +437,11 @@
 				|| (navigator.msMaxTouchPoints > 0));
 		}
 		
-		if(is_touch_device())
+		if(is_touch_device()) {
 			document.getElementById('Fullscreen').style = "display:none";
-		else
+		} else {
 			document.getElementById('MobileFullscreen').style = "display:none";
+		}
     </script>
     <script>
 
