@@ -395,22 +395,33 @@
 				canvas.style.height = screenfull.isFullscreen ? "100%" : "auto";
 				if(screenfull.isFullscreen) {
 					fullscreen_elem.addEventListener("touchstart", tapHandler);
+					
+					document.addEventListener('touchstart',handle_touchstart, false);
+					document.addEventListener('touchmove', handle_touchmove, false);
 				} else {
 					fullscreen_elem.removeEventListener("touchstart", tapHandler);
+					
+					document.removeEventListener('touchstart',handle_touchstart, false);
+					document.removeEventListener('touchmove', handle_touchmove, false);
 					save_ram();
 				}
 			});
 		}
 		
 		var element;
-		document.addEventListener('touchstart', function(event) {
-			event.preventDefault();
-			var touch = event.touches[0];
-			element = document.elementFromPoint(touch.pageX,touch.pageY);
-		}, false);
 		
-		document.addEventListener('touchmove', function(event) {
-			event.preventDefault();
+		function handle_touchstart(event) {
+			//event.preventDefault();
+			var touch = event.touches[0];
+			var over = document.elementFromPoint(touch.pageX, touch.pageY);
+			if(Array.indexOf(fullscreen_gbinputs, over) != -1)
+			{
+				element = over;
+			}
+		}
+		
+		function handle_touchmove(event) {
+			//event.preventDefault();
 			var touch = event.touches[0];
 			var over = document.elementFromPoint(touch.pageX,touch.pageY);
 			if (element != null && element !== over) {
@@ -426,7 +437,7 @@
 				start.initTouchEvent("touchstart", true, true, window, 1, false, false, false, false, event.touches, null, null);
 				over.dispatchEvent(start)
 			}
-		}, false);
+		}
 		
 		function is_touch_device() {
 			return (('ontouchstart' in window)
