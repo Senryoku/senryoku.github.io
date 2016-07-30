@@ -24,8 +24,9 @@
 		<span><input type="button" id="sound-control" value="Toggle Sound"></span>
 		<!--<span><input type="button" id="toggle-bios" value="Toggle BootROM"></span>-->
 		<span><input type="button" id="save-ram" value="Save"></span>
-		<span><input class="button" type="button" value="Fullscreen" onclick="Module.requestFullScreen(false, false)" id="Fullscreen">
-		<span><input class="button" type="button" value="Fullscreen" id="MobileFullscreen">
+		<!--<span><input class="button" type="button" value="Fullscreen" onclick="Module.requestFullScreen(false, false)" id="Fullscreen"></span>-->
+		<span><input class="button" type="button" value="Fullscreen" id="Fullscreen"></span>
+		<span><label><input type="checkbox" value="onscreen_inputs" id="onscreen_inputs">OnScreen Inputs</label></span>
 		</span>
 	</span>
 	<hr />
@@ -370,15 +371,14 @@
 		const fullscreen_elem = document.getElementById('gameboy');
 		const canvas = document.getElementById('canvas');
 
-		document.getElementById('MobileFullscreen').addEventListener('click', () => {
+		document.getElementById('Fullscreen').addEventListener('click', () => {
 			if (screenfull.enabled) {
 				screenfull.request(fullscreen_elem);
 			}
 		});
 		
-
+		// Prevents double tap (zoom) on mobile.
 		var tapedTwice = false;
-
 		function tapHandler(event) {
 			if(!tapedTwice) {
 				tapedTwice = true;
@@ -390,18 +390,21 @@
  
 		var fullscreen_inputs = document.getElementsByClassName("fullscreen_inputs");
 		var fullscreen_gbinputs = document.getElementsByClassName("gbinput");
+		var use_onscreen_inputs = document.getElementById("onscreen_inputs");
+		use_onscreen_inputs.checked = is_touch_device();
 
 		if (screenfull.enabled) {
 			document.addEventListener(screenfull.raw.fullscreenchange, () => {
 				console.log(screenfull.isFullscreen ? 'Going Fullscreen' : 'Leaving Fullscreen');
-				for (i = 0; i < fullscreen_inputs.length; i++) {
-					fullscreen_inputs[i].style.display = screenfull.isFullscreen ? "block" : "none";
-				}
 				canvas.style.width = screenfull.isFullscreen ? "auto" : "500px";
 				canvas.style.height = screenfull.isFullscreen ? "100%" : "auto";
 				
-				if(is_touch_device())
+				if(use_onscreen_inputs.checked)
 				{
+					for (i = 0; i < fullscreen_inputs.length; i++) {
+						fullscreen_inputs[i].style.display = screenfull.isFullscreen ? "block" : "none";
+					}
+					
 					if(screenfull.isFullscreen) {
 						fullscreen_elem.addEventListener("touchstart", tapHandler);
 						
@@ -464,12 +467,6 @@
 				tmp.dispatchEvent(e);
 			}
 		}
-		
-		if(is_touch_device()) {
-			document.getElementById('Fullscreen').style = "display:none";
-		} else {
-			document.getElementById('MobileFullscreen').style = "display:none";
-		}	
     </script>
     <script>
 
@@ -489,8 +486,6 @@
         var script = document.createElement('script');
         script.src = "index.js";
         document.body.appendChild(script);
-
-</script>
-	</div>
+	</script>
   </body>
 </html>
