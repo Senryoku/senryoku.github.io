@@ -115,6 +115,12 @@
     <textarea id="output" rows="8"></textarea>
 
     <script type='text/javascript'>
+		function is_touch_device() {
+			return (('ontouchstart' in window)
+				|| (navigator.MaxTouchPoints > 0)
+				|| (navigator.msMaxTouchPoints > 0));
+		}
+		
       var statusElement = document.getElementById('status');
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
@@ -216,7 +222,7 @@
 				// Dispatch to browser for real (use this if page uses SDL or something else for event handling):
 				Module['canvas'].dispatchEvent ? Module['canvas'].dispatchEvent(e) : Module['canvas'].fireEvent("on" + eventType, e);
 			}
-			console.log("Simulate " + eventType + " " + keyCode); 
+			//console.log("Simulate " + eventType + " " + keyCode); 
 		}
 		
 		// https://github.com/sindresorhus/screenfull.js/
@@ -393,24 +399,31 @@
 				}
 				canvas.style.width = screenfull.isFullscreen ? "auto" : "500px";
 				canvas.style.height = screenfull.isFullscreen ? "100%" : "auto";
-				if(screenfull.isFullscreen) {
-					fullscreen_elem.addEventListener("touchstart", tapHandler);
-					
-					document.addEventListener('touchstart',handle_touchstart, false);
-					document.addEventListener('touchmove', handle_touchmove, false);
-					document.addEventListener('touchend', handle_touchend, false);
-				} else {
-					fullscreen_elem.removeEventListener("touchstart", tapHandler);
-					
-					document.removeEventListener('touchstart',handle_touchstart, false);
-					document.removeEventListener('touchmove', handle_touchmove, false);
-					document.removeEventListener('touchend', handle_touchend, false);
-					save_ram();
+				
+				if(is_touch_device())
+				{
+					if(screenfull.isFullscreen) {
+						fullscreen_elem.addEventListener("touchstart", tapHandler);
+						
+						document.addEventListener('touchstart',handle_touchstart, false);
+						document.addEventListener('touchmove', handle_touchmove, false);
+						document.addEventListener('touchend', handle_touchend, false);
+					} else {
+						fullscreen_elem.removeEventListener("touchstart", tapHandler);
+						
+						document.removeEventListener('touchstart',handle_touchstart, false);
+						document.removeEventListener('touchmove', handle_touchmove, false);
+						document.removeEventListener('touchend', handle_touchend, false);
+					}
 				}
+				
+				if(!screenfull.isFullscreen)
+					save_ram();
 			});
 		}
 		
-		var element;
+		// Handles switching between buttons without lifting fingers
+		var touched_element;
 		
 		function handle_touchstart(event) {
 			//event.preventDefault();
@@ -418,7 +431,7 @@
 			var over = document.elementFromPoint(touch.pageX, touch.pageY);
 			if(Array.indexOf(fullscreen_gbinputs, over) != -1)
 			{
-				element = over;
+				touched_element = over;
 			}
 		}
 		
@@ -426,14 +439,14 @@
 			//event.preventDefault();
 			var touch = event.touches[0];
 			var over = document.elementFromPoint(touch.pageX,touch.pageY);
-			if (element != null && element !== over) {
+			if (touched_element != null && touched_element !== over) {
 				var e = document.createEvent('TouchEvent');
 				e.initTouchEvent("touchend", true, true, window, 1, false, false, false, false, null, null, null);
-				element.dispatchEvent(e);
-				element = null;
+				touched_element.dispatchEvent(e);
+				touched_element = null;
 			}
 				
-			if(element !== over && Array.indexOf(fullscreen_gbinputs, over) != -1)
+			if(touched_element !== over && Array.indexOf(fullscreen_gbinputs, over) != -1)
 			{
 				var start = document.createEvent('TouchEvent');
 				start.initTouchEvent("touchstart", true, true, window, 1, false, false, false, false, event.touches, null, null);
@@ -442,20 +455,14 @@
 		}
 		
 		function handle_touchend(event) {
-			if(element !== null)
+			if(touched_element !== null)
 			{
-				var tmp = element;
-				element = null;
+				var tmp = touched_element;
+				touched_element = null;
 				var e = document.createEvent('TouchEvent');
 				e.initTouchEvent("touchend", true, true, window, 1, false, false, false, false, null, null, null);
 				tmp.dispatchEvent(e);
 			}
-		}
-		
-		function is_touch_device() {
-			return (('ontouchstart' in window)
-				|| (navigator.MaxTouchPoints > 0)
-				|| (navigator.msMaxTouchPoints > 0));
 		}
 		
 		if(is_touch_device()) {
