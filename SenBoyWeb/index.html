@@ -398,11 +398,13 @@
 					
 					document.addEventListener('touchstart',handle_touchstart, false);
 					document.addEventListener('touchmove', handle_touchmove, false);
+					document.addEventListener('touchend', handle_touchend, false);
 				} else {
 					fullscreen_elem.removeEventListener("touchstart", tapHandler);
 					
 					document.removeEventListener('touchstart',handle_touchstart, false);
 					document.removeEventListener('touchmove', handle_touchmove, false);
+					document.removeEventListener('touchend', handle_touchend, false);
 					save_ram();
 				}
 			});
@@ -436,6 +438,17 @@
 				var start = document.createEvent('TouchEvent');
 				start.initTouchEvent("touchstart", true, true, window, 1, false, false, false, false, event.touches, null, null);
 				over.dispatchEvent(start)
+			}
+		}
+		
+		function handle_touchend(event) {
+			if(element !== null)
+			{
+				var tmp = element;
+				element = null;
+				var e = document.createEvent('TouchEvent');
+				e.initTouchEvent("touchend", true, true, window, 1, false, false, false, false, null, null, null);
+				tmp.dispatchEvent(e);
 			}
 		}
 		
