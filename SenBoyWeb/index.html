@@ -426,7 +426,7 @@
 		}
 		
 		// Handles switching between buttons without lifting fingers
-		var touched_element;
+		var touched_element = null;
 		
 		function handle_touchstart(event) {
 			//event.preventDefault();
@@ -458,7 +458,7 @@
 		}
 		
 		function handle_touchend(event) {
-			if(touched_element !== null)
+			if(touched_element !== null && touched_element)
 			{
 				var tmp = touched_element;
 				touched_element = null;
