@@ -57,7 +57,7 @@
 		</div>
 		<div id="canvas_container">
 			<div id="gameboy">
-				<div class="fullscreen_inputs input_left">
+				<div class="fullscreen_inputs input_left" id="GameBoy_DPad">
 					<input type="button" class="gbinput dir" id="Gameboy_Up_full" style="border-radius: 0.5em 0.5em 0 0;"
 						ontouchstart="simulateKeyEvent('keydown', 38, 0)" ontouchend="simulateKeyEvent('keyup', 38, 0)"
 						onmousedown="simulateKeyEvent('keydown', 38, 0)" onmouseup="simulateKeyEvent('keyup', 38, 0)" value="&#9650;">
@@ -76,7 +76,7 @@
 				
 				<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 			
-				<div class="fullscreen_inputs input_right">
+				<div class="fullscreen_inputs input_right" id="GameBoy_AB">
 					<input type="button" class="button gbinput gbbutton" id="Gameboy_B_full"
 						ontouchstart="simulateKeyEvent('keydown', 82, 'R')" ontouchend="simulateKeyEvent('keyup', 82, 'R')"
 						 onmousedown="simulateKeyEvent('keydown', 82, 'R')" onmouseup="simulateKeyEvent('keyup', 82, 'R')" value="B">
@@ -84,7 +84,7 @@
 						ontouchstart="simulateKeyEvent('keydown', 69, 'E')" ontouchend="simulateKeyEvent('keyup', 69, 'E')"
 						 onmousedown="simulateKeyEvent('keydown', 69, 'E')" onmouseup="simulateKeyEvent('keyup', 69, 'E')" value="A">
 				</div>
-				<div class="fullscreen_inputs input_right input_bottom">
+				<div class="fullscreen_inputs input_right input_bottom" id="GameBoy_StartSelect">
 					<input type="button" class="gbinput startselect" id="Gameboy_Select_full" 
 						ontouchstart="simulateKeyEvent('keydown', 84, 'T')" ontouchend="simulateKeyEvent('keyup', 84, 'T')"
 						onmousedown="simulateKeyEvent('keydown', 84, 'T')" onmouseup="simulateKeyEvent('keyup', 84, 'T')" value="Select">
@@ -393,11 +393,35 @@
 		var use_onscreen_inputs = document.getElementById("onscreen_inputs");
 		use_onscreen_inputs.checked = is_touch_device();
 
+		function adjust_canvas(fullscreen)
+		{
+			var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+			var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+			if(w < h) {
+				canvas.style.width = fullscreen ? "100%" : "500px";
+				canvas.style.height = fullscreen ? "auto" : "auto";
+				document.getElementById("GameBoy_DPad").style.top = "";
+				document.getElementById("GameBoy_DPad").style.transform = "";
+				document.getElementById("GameBoy_DPad").style.bottom = "1.0cm";
+				document.getElementById("GameBoy_AB").style.top = "";
+				document.getElementById("GameBoy_AB").style.transform = "";
+				document.getElementById("GameBoy_AB").style.bottom = "2.0cm";
+			} else {
+				canvas.style.width = fullscreen ? "auto" : "500px";
+				canvas.style.height = fullscreen ? "100%" : "auto";
+				document.getElementById("GameBoy_DPad").style.top = "50%";
+				document.getElementById("GameBoy_DPad").style.transform = "translateY(-50%)";
+				document.getElementById("GameBoy_DPad").style.bottom = "";
+				document.getElementById("GameBoy_AB").style.top = "50%";
+				document.getElementById("GameBoy_AB").style.transform = "translateY(-50%)";
+				document.getElementById("GameBoy_AB").style.bottom = "";
+			}
+		}
+		
 		if (screenfull.enabled) {
 			document.addEventListener(screenfull.raw.fullscreenchange, () => {
 				console.log(screenfull.isFullscreen ? 'Going Fullscreen' : 'Leaving Fullscreen');
-				canvas.style.width = screenfull.isFullscreen ? "auto" : "500px";
-				canvas.style.height = screenfull.isFullscreen ? "100%" : "auto";
+				adjust_canvas(screenfull.isFullscreen);
 				
 				if(use_onscreen_inputs.checked)
 				{
@@ -425,6 +449,13 @@
 			});
 		}
 		
+		var supportsOrientationChange = "onorientationchange" in window,
+			orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+		window.addEventListener(orientationEvent, function() {
+			adjust_canvas(screenfull.isFullscreen);
+		}, false);
+
 		// Handles switching between buttons without lifting fingers
 		var touched_element = null;
 		
