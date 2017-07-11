@@ -1,3 +1,9 @@
+html 
+{
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+
 body
 {
 	font-family: Arial, Helvetica, sans-serif;
