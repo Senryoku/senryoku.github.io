@@ -15,8 +15,10 @@ def list_files(path):
 pages = list_files('data/pages');
 with open('template/header.html', encoding='utf8') as header, open('template/footer.html', encoding='utf8') as footer:
 	for page in pages:	
+		header.seek(0)
+		footer.seek(0)
 		with open('data/pages/' + page, encoding='utf8') as content, open(page, 'w', encoding='utf8') as output:
-			output.write(header)
-			output.write(content)
-			output.write(footer)
-	print("Wrote " + page)
+			output.write(header.read())
+			output.write(content.read())
+			output.write(footer.read())
+		print("Wrote " + page)
