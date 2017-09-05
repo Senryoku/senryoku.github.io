@@ -7,4 +7,118 @@
 				</p>
 				
 				<hr>
-				<img src="data/img/DeferredRendering/VHD_mini.png" alt="Sponza model in a recent iteration of my Deferred rendering engine." />
+				
+				<style>
+				#image-zoom {
+					position: relative;
+					margin: auto;
+					height: 50vh;
+				}
+				
+				#image-zoom img {
+					position: absolute;
+					top: 0;
+					margin-left: auto;
+					margin-right: auto;
+					left: 0;
+					right: 0;
+					max-width: 100%;
+					max-height: 100%;
+					transition: all 1s;
+				}
+				
+				.fade {
+					opacity: 0;
+				}
+				
+				.image-collection {
+					text-align: center;
+				}
+				
+				.image-collection img {
+					display: inline-block;
+					
+					width: 100px;
+					height: 50px;
+					object-fit: cover;
+					
+					-webkit-border-radius: 25px;
+					-moz-border-radius: 25px;
+					border-radius: 25px;
+					
+					margin-left: 15px;
+					margin-right: 15px;
+					margin-bottom: 15px;
+					
+					cursor: pointer;
+					cursor: hand;
+					
+					opacity: 0.5;
+					transition: all 1s;
+				}
+				
+				.image-selected {
+					opacity: 0.75 !important;
+					box-shadow: 0px 0px 2px 1px #AAA;
+				}
+				
+				.image-collection img:hover {
+					opacity: 1;
+					box-shadow: 0px 0px 2px 1px #EEE;
+					transition: all 0.2s;
+				}
+				</style>
+				
+				<div class="image-collection">
+					<img src="data/img/DeferredRendering/VHD_mini.png" />
+					<img src="data/img/DeferredRendering/Particles250_mini.png" />
+					<img src="data/img/SenBoy/SenBoy_Zelda_1.png" />
+					<img src="data/img/water.png" />
+					<img src="data/img/Warhammer/Bloodstoker.jpg" />
+				</div>
+				
+				<div id="image-zoom">
+					<img src="" />
+					<img class="fade" src="" />
+				</div>
+				
+				<script>
+					let image_zoom = document.querySelector("#image-zoom");
+					let displayed_img = 0;
+					let col = document.querySelector(".image-collection");
+					
+					for (var i = 0, len = col.children.length; i < len; i++) {
+						// Plug select funtion to all children
+						(function(index) {
+							col.children[index].onclick = function(){
+								  select(index);
+							}
+						})(i);
+					}
+					
+					var rotate_timing = 5000;
+					var auto_rotate;
+					var current_image = 0;
+					
+					function select(idx)
+					{
+						image_zoom.children[displayed_img].classList.add('fade');
+						displayed_img = (displayed_img + 1) % 2;
+						image_zoom.children[displayed_img].classList.remove('fade');
+						
+						col.children[current_image].classList.remove('image-selected');
+						current_image = idx;
+						col.children[current_image].classList.add('image-selected');
+												
+						image_zoom.children[displayed_img].src = col.children[idx].getAttribute("src");
+						clearTimeout(auto_rotate);
+						auto_rotate = setTimeout(roll_image, rotate_timing);
+					}
+					
+					function roll_image()
+					{
+						select((current_image + 1) % col.children.length);
+					}
+					
+					select(0);
+				</script>
