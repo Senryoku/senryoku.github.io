@@ -47,7 +47,7 @@
 				#image-zoom {
 					position: relative;
 					margin: auto;
-					height: 500px;
+					height: 450px;
 				}
 				
 				#image-zoom img {
@@ -58,7 +58,7 @@
 					left: 0;
 					right: 0;
 					max-width: 100%;
-					max-height: 100%;
+					height: 100%;
 					transition: all 1s;
 				}
 				
@@ -67,47 +67,46 @@
 				}
 				
 				.image-collection {
+					display: none;
+				}
+				
+				.image-collection-nav {
 					text-align: center;
 				}
 				
-				.image-collection img {
+				.image-collection-nav-el {
 					display: inline-block;
 					
-					width: 100px;
-					height: 50px;
-					object-fit: cover;
+					width: 10px;
+					height: 10px;
+					background-color: #555;
 					
-					-webkit-border-radius: 25px;
-					-moz-border-radius: 25px;
-					border-radius: 25px;
+					-webkit-border-radius: 5px;
+					-moz-border-radius: 5px;
+					border-radius: 5px;
 					
-					margin-left: 15px;
-					margin-right: 15px;
-					margin-bottom: 15px;
+					margin: 15px;
 					
 					cursor: pointer;
 					cursor: hand;
 					
 					opacity: 0.5;
-					transition: all 1s;
+					transition: all 0.5s;
+				}
+				
+				.image-collection-nav-el:hover {
+					background-color: #FFF;
 				}
 				
 				.image-selected {
-					opacity: 0.75 !important;
-					box-shadow: 0px 0px 2px 1px #AAA;
-				}
-				
-				.image-collection img:hover {
-					opacity: 1;
-					box-shadow: 0px 0px 2px 1px #EEE;
-					transition: all 0.2s;
+					background-color: #DDD;
 				}
 				</style>
 				
 				<div class="image-collection">
 					<img src="data/img/DeferredRendering/VHD_mini.png" />
 					<img src="data/img/DeferredRendering/Particles250_mini.png" />
-					<img src="data/img/SenBoy/SenBoy_Zelda_1.png" />
+					<img src="data/img/SenBoy/SenBoy_Debug_1.png" />
 					<img src="data/img/water.png" />
 					<img src="data/img/Warhammer/Bloodstoker.jpg" />
 				</div>
@@ -117,18 +116,25 @@
 					<img class="fade" src="" />
 				</div>
 				
+				<div class="image-collection-nav">
+				</div>
+				
 				<script>
 					let image_zoom = document.querySelector("#image-zoom");
 					let displayed_img = 0;
 					let col = document.querySelector(".image-collection");
+					let nav = document.querySelector(".image-collection-nav");
 					
 					for (var i = 0, len = col.children.length; i < len; i++) {
 						// Plug select funtion to all children
+						var el = document.createElement('div');
+						el.classList.add('image-collection-nav-el');
 						(function(index) {
-							col.children[index].onclick = function(){
+							el.onclick = function(){
 								  select(index);
 							}
 						})(i);
+						nav.appendChild(el);
 					}
 					
 					var rotate_timing = 5000;
@@ -141,9 +147,9 @@
 						displayed_img = (displayed_img + 1) % 2;
 						image_zoom.children[displayed_img].classList.remove('fade');
 						
-						col.children[current_image].classList.remove('image-selected');
+						nav.children[current_image].classList.remove('image-selected');
 						current_image = idx;
-						col.children[current_image].classList.add('image-selected');
+						nav.children[current_image].classList.add('image-selected');
 												
 						image_zoom.children[displayed_img].src = col.children[idx].getAttribute("src");
 						clearTimeout(auto_rotate);
