@@ -114,12 +114,12 @@ navbar li
 
 navbar li.selected
 {
-	background-color: #383838;
+	background-color: rgba(0, 0, 0, 0.20);
 }
 
 navbar li:hover
 {
-	background-color: #303030;
+	background-color: rgba(0, 0, 0, 0.30);
 	
 	transition: background 0.3s;
 }
