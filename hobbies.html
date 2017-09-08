@@ -55,6 +55,10 @@
 					background-color: rgba(0,0,0,0.9);
 					
 					transition: opacity 0.2s ease-in;
+					
+					display: grid;
+					grid-template-columns: 1fr 1250px 1fr;
+					grid-template-areas: "prev center next";
 				}
 
 				.modal-displayed {
@@ -80,6 +84,33 @@
 
 				.modal-displayed .modal-content {
 					transform: scale(1);
+				}
+				
+				.modal-center {
+					grid-area: center;
+				}
+				
+				.modal-prev, .modal-next {
+					font-size: 10em;
+					line-height: 100vh;
+					vertical-align: middle;
+					height: 100%;
+					
+					transition: all 0.25s;
+					cursor: pointer;
+				}
+				
+				.modal-prev:hover, .modal-next:hover {
+					background-color: rgba(255, 255, 255, 0.05);
+				}
+				
+				.modal-prev {
+					grid-area: prev;
+					text-align: right;
+				}
+				
+				.modal-next {
+					grid-area: next;
 				}
 	
 				.valign-hack-table {	
@@ -115,15 +146,21 @@
 				.image-collection-element:hover {
 					box-shadow: 0px 0px 3px 2px #FFF;
 				}
+				
+				.hide {
+					display: none;
+				}
 				</style>
 				
 				<div id="modal" class="modal" onclick="hide(this)">
-					<div class="valign-hack-table">
+					<div class="modal-prev">&lt;</div>
+					<div class="valign-hack-table modal-center">
 						<div class="valign-hack-cell">
 							<img class="modal-content" />
 							<div class="modal-caption"></div>
 						</div>
 					</div>
+					<div class="modal-next">&gt;</div>
 				</div>
 				
 				<div id="image-collection">
@@ -132,6 +169,8 @@
 				<script>
 				var p = document.querySelector("#image-collection");
 				var modal = document.querySelector('#modal');
+				var prev = document.querySelector('#modal .modal-prev');
+				var next = document.querySelector('#modal .modal-next');
 				
 				var images = [
 					{caption: "A Bloodreaver, my first painted miniature", src: "Bloodreaver_0.jpg"},
@@ -147,12 +186,6 @@
 				];
 				
 				images.forEach(function(img) {
-					/*document.write(`
-					<figure class="single">
-						<img src="data/img/Warhammer/` + img.src + `" alt="` + img.caption + `"/>
-						<figcaption>` + img.caption + `</figcaption>
-					</figure>
-					`);*/
 					var el = document.createElement('img');
 					el.src = 'data/img/Warhammer/thumb_' +img.src;
 					el.classList.add('image-collection-element');
@@ -163,6 +196,26 @@
 					if(n < 0 || n >= p.children.length)
 						return;
 
+					if(n > 0) {
+						prev.classList.remove('hide');
+						prev.onclick = function(e) {
+							select(n - 1);
+							e.stopPropagation();
+						};
+					} else {
+						prev.classList.add('hide');
+					}
+
+					if(n < p.children.length - 1) {
+						next.classList.remove('hide');
+						next.onclick = function(e) {
+							select(n + 1);
+							e.stopPropagation();
+						};
+					} else {
+						next.classList.add('hide');
+					}
+						
 					// Update modal and display it
 					var src = 'data/img/Warhammer/' + images[n].src;
 					modal.querySelector('.modal-caption').innerHTML = images[n].caption;
