@@ -75,7 +75,6 @@ function init_slider(selector, img_urls, options) {
 				ret.on_loading_done();
 		};
 		ret.preload[idx].src = ret.img_urls[idx];
-		console.log(ret.preload[idx]);
 	}
 	
 	ret.next_image = function() {
