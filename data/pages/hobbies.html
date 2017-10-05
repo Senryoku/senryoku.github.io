@@ -115,6 +115,11 @@
 				.hide {
 					display: none;
 				}
+				
+				.slider {
+					width: 500px;
+					margin: auto;
+				}
 				</style>
 				
 				<div id="modal" class="modal" onclick="hide(this)">
@@ -130,6 +135,10 @@
 				
 				<div id="image-collection">
 				</div>
+				
+				<p>And because I wanted to have fun with javascript, a 360° view of one miniature (controllable with your mouse):</p>
+				
+				<img id="gorechosen_slider" class="slider" />
 				
 				<script>
 				var p = document.querySelector("#image-collection");
@@ -206,4 +215,10 @@
 						}
 					})(i);
 				}
+				</script>
+				
+				<script type="text/javascript" src="js/slider.js"></script>
+				
+				<script type="text/javascript">
+					var slider = init_slider('#gorechosen_slider', Array.apply(null, Array(16)).map(function (_, i) { return "data/img/Warhammer/Gorechosen_360/" + i + ".jpg"; }));
 				</script>
