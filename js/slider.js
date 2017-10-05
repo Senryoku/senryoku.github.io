@@ -39,10 +39,10 @@ function init_slider(selector, img_urls, options) {
 	var ret = {};
 	
 	// Overridable options
-	ret.auto_slide_period = 150;
-	ret.auto_slide_onload = true;
-	ret.auto_loop = false;
-	ret.speed = 25;
+	ret.auto_slide_onload = true; // Automatically animate after loading.
+	ret.auto_slide_period = 150;  // In milliseconds.
+	ret.auto_slide_loop = false;  // Stops after one complete rotation if false. Continues otherwise.
+	ret.speed = 25;               // 'Distance' between two images. (Bad name...)
 	
 	if(options)
 		for(var opt in options) 
@@ -84,13 +84,13 @@ function init_slider(selector, img_urls, options) {
 	
 	ret.prev_image = function() {
 		ret.current_image = ret.current_image - 1;
-		if(ret.current_image < 0) ret.current_image = ret.img_urls.length + ret.current_image;
+		if(ret.current_image < 0) ret.current_image += ret.img_urls.length;
 		ret.load_current();
 	};
 	
 	ret.auto_slide = function() {
 		ret.next_image();
-		if(ret.auto_loop || ret.current_image > 0)
+		if(ret.auto_slide_loop || ret.current_image > 0)
 			ret.auto_slide_timeout = setTimeout(ret.auto_slide, ret.auto_slide_period);
 	};
 	
@@ -148,6 +148,7 @@ function init_slider(selector, img_urls, options) {
 		if(fullscreen(ret.img))
 		{
 			ret.original_style = ret.img.style.cssText;
+			// Aiming for an uniform behavior across browsers
 			ret.img.style.cssText = 'background-color: black; width:100vw; height:100vh; object-fit: contain';
 		} else {
 			ret.img.style = ret.original_style;
