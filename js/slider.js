@@ -51,9 +51,7 @@ function init_slider(selector, img_urls) {
 	ret.diff_x = 0;
 	
 	ret.sliding = function(e) {
-		var clientX = e.clientX;
-		if(e.type == "touchmove")
-			clientX = e.touches[0].clientX;
+		var clientX = e.clientX || e.changedTouches[0].clientX;
 		
 		ret.diff_x += clientX - ret.last_x;
 		ret.last_x = clientX;
@@ -83,9 +81,7 @@ function init_slider(selector, img_urls) {
 	
 	ret.start_slide = function(e) {
 		clearTimeout(ret.auto_slide_timeout);
-		var clientX = e.clientX;
-		if(e.type == "touchmove")
-			clientX = e.touches[0].clientX;
+		var clientX = e.clientX || e.touches[0].clientX;
 		ret.last_x = clientX;
 		
 		if (window.PointerEvent) {
