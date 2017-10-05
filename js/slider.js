@@ -30,24 +30,6 @@ function fullscreen(el) {
 	}
 }
 
-var sheet = (function() {
-  // Create the <style> tag
-	var style = document.createElement("style");
-	// WebKit hack :(
-	style.appendChild(document.createTextNode(""));
-	// Add the <style> element to the page
-	document.head.appendChild(style);
-	return style.sheet;
-})();
-
-function addCSSRule(sheet, selector, rules, index) {
-	if(sheet.insertRule) {
-		sheet.insertRule(selector + "{" + rules + "}", index);
-	} else {
-		sheet.addRule(selector, rules, index);
-	}
-}
-
 /*
 	Initialize a slider on img element designated by 'selector'.
 	'img_url' must be an array containing all the images to be displayed (in order).
