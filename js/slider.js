@@ -113,8 +113,6 @@ function init_slider(selector, img_urls) {
 			(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
 			(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
 			(document.msFullscreenElement && document.msFullscreenElement !== null);
-			
-		console.log(fullscreenElement);
 
 		if(!fullscreenElement) {
 			if(ret.img.requestFullScreen)
