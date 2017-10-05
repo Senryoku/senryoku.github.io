@@ -107,5 +107,37 @@ function init_slider(selector, img_urls) {
 		ret.img.ontouchstart = ret.start_slide;
 	}
 	
+	ret.fullscreen = function() {
+		var fullscreenElement = 
+			(document.fullscreenElement && document.fullscreenElement !== null) ||
+			(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+			(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+			(document.msFullscreenElement && document.msFullscreenElement !== null);
+			
+		console.log(fullscreenElement);
+
+		if(!fullscreenElement) {
+			if(ret.img.requestFullScreen)
+				ret.img.requestFullScreen();
+			else if(ret.img.webkitRequestFullScreen)
+				ret.img.webkitRequestFullScreen();
+			else if(ret.img.mozRequestFullScreen)
+				ret.img.mozRequestFullScreen();
+			else if(ret.img.msRequestFullScreen)
+				ret.img.msRequestFullScreen();
+		} else {
+			if (document.exitFullscreen)
+				document.exitFullscreen();
+			else if (document.webkitExitFullscreen)
+				document.webkitExitFullscreen();
+			else if (document.mozCancelFullScreen)
+				document.mozCancelFullScreen();
+			else if (document.msExitFullscreen)
+				document.msExitFullscreen();
+		}
+	}
+	
+	ret.img.addEventListener("dblclick", ret.fullscreen);
+	
 	return ret;
 }
