@@ -1,3 +1,31 @@
+function fullscreen(el) {
+		var fullscreenElement = 
+			(document.fullscreenElement && document.fullscreenElement !== null) ||
+			(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+			(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+			(document.msFullscreenElement && document.msFullscreenElement !== null);
+
+		if(!fullscreenElement) {
+			if(el.requestFullScreen)
+				el.requestFullScreen();
+			else if(el.webkitRequestFullScreen)
+				el.webkitRequestFullScreen();
+			else if(el.mozRequestFullScreen)
+				el.mozRequestFullScreen();
+			else if(el.msRequestFullScreen)
+				el.msRequestFullScreen();
+		} else {
+			if (document.exitFullscreen)
+				document.exitFullscreen();
+			else if (document.webkitExitFullscreen)
+				document.webkitExitFullscreen();
+			else if (document.mozCancelFullScreen)
+				document.mozCancelFullScreen();
+			else if (document.msExitFullscreen)
+				document.msExitFullscreen();
+		}
+}
+
 /*
 	Initialize a slider on img element designated by 'selector'.
 	'img_url' must be an array containing all the images to be displayed (in order).
@@ -107,33 +135,7 @@ function init_slider(selector, img_urls) {
 		ret.img.ontouchstart = ret.start_slide;
 	}
 	
-	ret.fullscreen = function() {
-		var fullscreenElement = 
-			(document.fullscreenElement && document.fullscreenElement !== null) ||
-			(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-			(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-			(document.msFullscreenElement && document.msFullscreenElement !== null);
-
-		if(!fullscreenElement) {
-			if(ret.img.requestFullScreen)
-				ret.img.requestFullScreen();
-			else if(ret.img.webkitRequestFullScreen)
-				ret.img.webkitRequestFullScreen();
-			else if(ret.img.mozRequestFullScreen)
-				ret.img.mozRequestFullScreen();
-			else if(ret.img.msRequestFullScreen)
-				ret.img.msRequestFullScreen();
-		} else {
-			if (document.exitFullscreen)
-				document.exitFullscreen();
-			else if (document.webkitExitFullscreen)
-				document.webkitExitFullscreen();
-			else if (document.mozCancelFullScreen)
-				document.mozCancelFullScreen();
-			else if (document.msExitFullscreen)
-				document.msExitFullscreen();
-		}
-	}
+	ret.fullscreen = function() { fullscreen(ret.img); };
 	
 	ret.img.addEventListener("dblclick", ret.fullscreen);
 	
