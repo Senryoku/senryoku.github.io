@@ -51,8 +51,12 @@ function init_slider(selector, img_urls) {
 	ret.diff_x = 0;
 	
 	ret.sliding = function(e) {
-		ret.diff_x += e.clientX - ret.last_x;
-		ret.last_x = e.clientX;
+		var clientX = e.clientX;
+		if(e.type == "touchmove")
+			clientX = e.touches[0].clientX;
+		
+		ret.diff_x += clientX - ret.last_x;
+		ret.last_x = clientX;
 		if(ret.diff_x > ret.speed) {
 			ret.prev_image();
 			ret.diff_x -= ret.speed;
@@ -79,17 +83,22 @@ function init_slider(selector, img_urls) {
 	
 	ret.start_slide = function(e) {
 		clearTimeout(ret.auto_slide_timeout);
-		ret.last_x = e.clientX;
+		var clientX = e.clientX;
+		if(e.type == "touchmove")
+			clientX = e.touches[0].clientX;
+		ret.last_x = clientX;
 		
 		if (window.PointerEvent) {
 			document.addEventListener("pointermove", ret.sliding);
 			document.addEventListener("pointerup", ret.end_slide);
 		} else {
-			document.addEventListener("mousemove", ret.sliding);
-			document.addEventListener("mouseup", ret.end_slide);
-						
-			document.addEventListener("touchmove", ret.sliding);
-			document.addEventListener("touchend", ret.end_slide);
+			if(e.type == "touchstart") {
+				document.addEventListener("touchmove", ret.sliding);
+				document.addEventListener("touchend", ret.end_slide);
+			} else {
+				document.addEventListener("mousemove", ret.sliding);
+				document.addEventListener("mouseup", ret.end_slide);
+			}
 		}
 		
 		return false;
