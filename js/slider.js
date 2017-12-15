@@ -31,9 +31,11 @@ function fullscreen(el) {
 }
 
 /*
-	Initialize a slider on img element designated by 'selector'.
-	'img_url' must be an array containing all the images to be displayed (in order).
-	Options can be customized by modifing the properties of the return value.
+	Initialize a slider on img element designated by 'selector' (required).
+	'img_url' (required) must be an array containing all the images to be displayed (in order).
+	'options' (optional) must be an object with the desired values for the parameters listed at the begining of the function.
+	Example:
+		init_slider('#my_slider', ['0.jpg', '1.jpg', ...], {auto_slide_loop: true});
 */
 function init_slider(selector, img_urls, options) {
 	var ret = {};
@@ -165,9 +167,22 @@ function init_slider(selector, img_urls, options) {
 			ret.auto_slide_timeout = setTimeout(ret.auto_slide, ret.auto_slide_period);
 	
 		// Enable Interactivity
-		ret.img.onmousedown = ret.start_slide;
-		ret.img.ontouchstart = ret.start_slide;
+		ret.img.addEventListener("mousedown", ret.start_slide);
+		ret.img.addEventListener("touchstart", ret.start_slide);
 		ret.img.addEventListener("dblclick", ret.fullscreen);
+	};
+	
+	// Call this if you have to delete your img element
+	ret.cleanup = function() {
+		ret.preload = [];
+		ret.img.removeEventListener("mousedown", ret.start_slide);
+		ret.img.removeEventListener("touchstart", ret.start_slide);
+		ret.img.removeEventListener("dblclick", ret.fullscreen);
+		
+		document.removeEventListener("touchmove", ret.sliding);
+		document.removeEventListener("touchend", ret.end_slide);
+		document.removeEventListener("mousemove", ret.sliding);
+		document.removeEventListener("mouseup", ret.end_slide);
 	};
 	
 	return ret;
