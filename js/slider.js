@@ -55,6 +55,7 @@ function init_slider(selector, img_urls, options) {
 	ret.current_image = 0;
 	ret.img = document.querySelector(selector);
 	ret.img.draggable = 'false';
+	ret.img.ondragstart = function() { return false; }
 	
 	ret.load_current = function() {
 		ret.img.src = ret.img_urls[ret.current_image];
