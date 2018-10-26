@@ -37,15 +37,15 @@ function fullscreen(el) {
 	'img_url' (required) must be an array containing all the images to be displayed (in order).
 	'options' (optional) must be an object with the desired values for the parameters listed at the begining of the function.
 	Example:
-		init_slider('#my_slider', ['0.jpg', '1.jpg', ...], {auto_slide_loop: true});
+		init_slider('#my_slider', ['0.jpg', '1.jpg', ...], {autoSlideLoop: true});
 */
-function init_slider(selector, img_urls, options) {
+function init_slider(selector, imgUrls, options) {
 	var ret = {};
 	
 	// Overridable options
-	ret.auto_slide_onload = true; // Automatically animate after loading.
-	ret.auto_slide_period = 150;  // In milliseconds.
-	ret.auto_slide_loop = false;  // Stops after one complete rotation if false. Continues otherwise.
+	ret.autoSlideOnLoad = true; // Automatically animate after loading.
+	ret.autoSlidePeriod = 150;  // In milliseconds.
+	ret.autoSlideLoop = false;  // Stops after one complete rotation if false. Continues otherwise.
 	ret.speed = 25;               // 'Distance' between two images. (Bad name...)
 	
 	if(options)
@@ -53,54 +53,54 @@ function init_slider(selector, img_urls, options) {
 			if(options.hasOwnProperty(opt))
 				ret[opt] = options[opt];
 	
-	ret.img_urls = img_urls || [];
-	ret.current_image = 0;
+	ret.imgUrls = imgUrls || [];
+	ret.currentImage = 0;
 	ret.img = document.querySelector(selector);
 	ret.img.draggable = 'false';
 	ret.img.ondragstart = function() { return false; }
 	
 	ret.load_current = function() {
-		ret.img.src = ret.img_urls[ret.current_image];
+		ret.img.src = ret.imgUrls[ret.currentImage];
 	};
 	
 	// Display a loading spinner
-	ret.img.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url(' + ret.img_urls[ret.current_image] + ')';
+	ret.img.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url(' + ret.imgUrls[ret.currentImage] + ')';
 	ret.img.style.backgroundSize = 'cover';
 	ret.img.src = 'data:image/svg+xml;utf8,<svg class="lds-spinner" width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background:none"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.8250000000000001s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(30 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.75s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(60 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.6749999999999999s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(90 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.6s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(120 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.525s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(150 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.45s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(180 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.375s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(210 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.3s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(240 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.225s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(270 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.15s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(300 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="-0.075s" repeatCount="indefinite"/></rect><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="rgba(255, 255, 255, 0.75)" transform="rotate(330 50 50)"><animate attributeName="opacity" values="1;0" dur="0.9s" begin="0s" repeatCount="indefinite"/></rect></svg>';
 	
 	// Preload images
-	ret.loaded_count = 0;
+	ret.loadedCount = 0;
 	ret.preload = [];
-	for(var idx in ret.img_urls)
+	for(var idx in ret.imgUrls)
 	{
 		ret.preload.push(new Image()) - 1;
 		ret.preload[idx].onload = function() {
-			ret.loaded_count++;
-			if(ret.loaded_count == ret.img_urls.length)
-				ret.on_loading_done();
+			ret.loadedCount++;
+			if(ret.loadedCount == ret.imgUrls.length)
+				ret.onLoadingDone();
 		};
-		ret.preload[idx].src = ret.img_urls[idx];
+		ret.preload[idx].src = ret.imgUrls[idx];
 	}
 	
-	ret.next_image = function() {
-		ret.current_image = (ret.current_image + 1) % ret.img_urls.length;
+	ret.nextImage = function() {
+		ret.currentImage = (ret.currentImage + 1) % ret.imgUrls.length;
 		ret.load_current();
 	};
 	
-	ret.prev_image = function() {
-		ret.current_image = ret.current_image - 1;
-		if(ret.current_image < 0) ret.current_image += ret.img_urls.length;
+	ret.prevImage = function() {
+		ret.currentImage = ret.currentImage - 1;
+		if(ret.currentImage < 0) ret.currentImage += ret.imgUrls.length;
 		ret.load_current();
 	};
 	
-	ret.auto_slide = function() {
-		ret.next_image();
-		if(ret.auto_slide_loop || ret.current_image > 0)
-			ret.auto_slide_timeout = setTimeout(ret.auto_slide, ret.auto_slide_period);
+	ret.autoSlide = function() {
+		ret.nextImage();
+		if(ret.autoSlideLoop || ret.currentImage > 0)
+			ret.autoSlide_timeout = setTimeout(ret.autoSlide, ret.autoSlidePeriod);
 	};
 	
-	ret.last_x = 0;
-	ret.diff_x = 0;
+	ret.lastX = 0;
+	ret.diffX = 0;
 	
 	ret.sliding = function(e) {
 		var clientX;
@@ -109,41 +109,41 @@ function init_slider(selector, img_urls, options) {
 		else
 			clientX = e.clientX;
 		
-		ret.diff_x += clientX - ret.last_x;
-		ret.last_x = clientX;
-		if(ret.diff_x > ret.speed) {
-			ret.prev_image();
-			ret.diff_x -= ret.speed;
+		ret.diffX += clientX - ret.lastX;
+		ret.lastX = clientX;
+		if(ret.diffX > ret.speed) {
+			ret.prevImage();
+			ret.diffX -= ret.speed;
 		}
 		
-		if(ret.diff_x < -ret.speed) {
-			ret.next_image();
-			ret.diff_x += ret.speed;
+		if(ret.diffX < -ret.speed) {
+			ret.nextImage();
+			ret.diffX += ret.speed;
 		}
 	};
 	
-	ret.end_slide = function(e) {
+	ret.endSlide = function(e) {
 		if(e.type == "touchend") {
 			document.removeEventListener("touchmove", ret.sliding);
-			document.removeEventListener("touchend", ret.end_slide);
+			document.removeEventListener("touchend", ret.endSlide);
 		} else {
 			document.removeEventListener("mousemove", ret.sliding);
-			document.removeEventListener("mouseup", ret.end_slide);
+			document.removeEventListener("mouseup", ret.endSlide);
 		}
 	};
 	
-	ret.start_slide = function(e) {
-		clearTimeout(ret.auto_slide_timeout);
-		ret.diff_x = 0;
+	ret.startSlide = function(e) {
+		clearTimeout(ret.autoSlide_timeout);
+		ret.diffX = 0;
 		
 		if(e.type == "touchstart") {
-			ret.last_x = e.changedTouches[0].clientX;
+			ret.lastX = e.changedTouches[0].clientX;
 			document.addEventListener("touchmove", ret.sliding);
-			document.addEventListener("touchend", ret.end_slide);
+			document.addEventListener("touchend", ret.endSlide);
 		} else {
-			ret.last_x = e.clientX;
+			ret.lastX = e.clientX;
 			document.addEventListener("mousemove", ret.sliding);
-			document.addEventListener("mouseup", ret.end_slide);
+			document.addEventListener("mouseup", ret.endSlide);
 		}
 		
 		return false;
@@ -153,53 +153,70 @@ function init_slider(selector, img_urls, options) {
 		fullscreen(ret.img);
 	};
 	
-	ret.adjustFullscreenStyle = function() {
+	ret.onFullscreen = function() {
 		if(getFullscreenElement())
 		{
 			ret.original_style = ret.img.style.cssText;
 			// Aiming for an uniform behavior across browsers
 			ret.img.style.cssText = 'background-color: black; width:100vw; height:100vh; object-fit: contain';
+			
+			ret.img.addEventListener("mousewheel", ret.mouseWheel);
+			ret.img.addEventListener("DOMMouseScroll", ret.mouseWheel);
 		} else {
 			ret.img.style = ret.original_style;
+			
+			ret.img.removeEventListener("mousewheel", ret.mouseWheel);
+			ret.img.removeEventListener("DOMMouseScroll", ret.mouseWheel);
 		}
 	}
 	
-	ret.on_loading_done = function() {
+	ret.mouseWheel = function(e) {
+		var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+		
+		if(delta < 0)
+			ret.prevImage();
+		else
+			ret.nextImage();
+		
+		return false;
+	};
+	
+	ret.onLoadingDone = function() {
 		// Delete spinner
 		ret.img.style.backgroundImage = '';
 		ret.load_current();
 	
 		// Launch animation if enabled
-		if(ret.auto_slide_onload)
-			ret.auto_slide_timeout = setTimeout(ret.auto_slide, ret.auto_slide_period);
+		if(ret.autoSlideOnLoad)
+			ret.autoSlide_timeout = setTimeout(ret.autoSlide, ret.autoSlidePeriod);
 	
 		// Enable Interactivity
-		ret.img.addEventListener("mousedown", ret.start_slide);
-		ret.img.addEventListener("touchstart", ret.start_slide);
+		ret.img.addEventListener("mousedown", ret.startSlide);
+		ret.img.addEventListener("touchstart", ret.startSlide);
 		ret.img.addEventListener("dblclick", ret.fullscreen);
 		
-		document.addEventListener("fullscreenchange", ret.adjustFullscreenStyle);
-		document.addEventListener("mozfullscreenchange", ret.adjustFullscreenStyle);
-		document.addEventListener("webkitfullscreenchange", ret.adjustFullscreenStyle);
-		document.addEventListener("msfullscreenchange", ret.adjustFullscreenStyle);
+		document.addEventListener("fullscreenchange", ret.onFullscreen);
+		document.addEventListener("mozfullscreenchange", ret.onFullscreen);
+		document.addEventListener("webkitfullscreenchange", ret.onFullscreen);
+		document.addEventListener("msfullscreenchange", ret.onFullscreen);
 	};
 	
 	// Call this if you have to delete your img element
 	ret.cleanup = function() {
 		ret.preload = [];
-		ret.img.removeEventListener("mousedown", ret.start_slide);
-		ret.img.removeEventListener("touchstart", ret.start_slide);
+		ret.img.removeEventListener("mousedown", ret.startSlide);
+		ret.img.removeEventListener("touchstart", ret.startSlide);
 		ret.img.removeEventListener("dblclick", ret.fullscreen);
 		
-		document.removeEventListener("fullscreenchange", ret.adjustFullscreenStyle);
-		document.removeEventListener("mozfullscreenchange", ret.adjustFullscreenStyle);
-		document.removeEventListener("webkitfullscreenchange", ret.adjustFullscreenStyle);
-		document.removeEventListener("msfullscreenchange", ret.adjustFullscreenStyle);
+		document.removeEventListener("fullscreenchange", ret.onFullscreen);
+		document.removeEventListener("mozfullscreenchange", ret.onFullscreen);
+		document.removeEventListener("webkitfullscreenchange", ret.onFullscreen);
+		document.removeEventListener("msfullscreenchange", ret.onFullscreen);
 		
 		document.removeEventListener("touchmove", ret.sliding);
-		document.removeEventListener("touchend", ret.end_slide);
+		document.removeEventListener("touchend", ret.endSlide);
 		document.removeEventListener("mousemove", ret.sliding);
-		document.removeEventListener("mouseup", ret.end_slide);
+		document.removeEventListener("mouseup", ret.endSlide);
 	};
 	
 	return ret;
