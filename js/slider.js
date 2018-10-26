@@ -1,12 +1,14 @@
-// Toggle fullscreen on element el.
-// Return true if requested fullscreen and false if exited fullscreen.
-function fullscreen(el) {
-	var fullscreenElement = 
-		(document.fullscreenElement && document.fullscreenElement !== null) ||
+function getFullscreenElement() {
+	return (document.fullscreenElement && document.fullscreenElement !== null) ||
 		(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
 		(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
 		(document.msFullscreenElement && document.msFullscreenElement !== null);
+}
 
+// Toggle fullscreen on element el.
+// Return true if requested fullscreen and false if exited fullscreen.
+function fullscreen(el) {
+	var fullscreenElement = getFullscreenElement();
 	if(!fullscreenElement) {
 		if(el.requestFullScreen)
 			el.requestFullScreen();
@@ -148,7 +150,11 @@ function init_slider(selector, img_urls, options) {
 	};
 	
 	ret.fullscreen = function() {
-		if(fullscreen(ret.img))
+		fullscreen(ret.img);
+	};
+	
+	ret.adjustFullscreenStyle = function() {
+		if(getFullscreenElement())
 		{
 			ret.original_style = ret.img.style.cssText;
 			// Aiming for an uniform behavior across browsers
@@ -156,7 +162,7 @@ function init_slider(selector, img_urls, options) {
 		} else {
 			ret.img.style = ret.original_style;
 		}
-	};
+	}
 	
 	ret.on_loading_done = function() {
 		// Delete spinner
@@ -171,6 +177,11 @@ function init_slider(selector, img_urls, options) {
 		ret.img.addEventListener("mousedown", ret.start_slide);
 		ret.img.addEventListener("touchstart", ret.start_slide);
 		ret.img.addEventListener("dblclick", ret.fullscreen);
+		
+		document.addEventListener("fullscreenchange", ret.adjustFullscreenStyle);
+		document.addEventListener("mozfullscreenchange", ret.adjustFullscreenStyle);
+		document.addEventListener("webkitfullscreenchange", ret.adjustFullscreenStyle);
+		document.addEventListener("msfullscreenchange", ret.adjustFullscreenStyle);
 	};
 	
 	// Call this if you have to delete your img element
@@ -179,6 +190,11 @@ function init_slider(selector, img_urls, options) {
 		ret.img.removeEventListener("mousedown", ret.start_slide);
 		ret.img.removeEventListener("touchstart", ret.start_slide);
 		ret.img.removeEventListener("dblclick", ret.fullscreen);
+		
+		document.removeEventListener("fullscreenchange", ret.adjustFullscreenStyle);
+		document.removeEventListener("mozfullscreenchange", ret.adjustFullscreenStyle);
+		document.removeEventListener("webkitfullscreenchange", ret.adjustFullscreenStyle);
+		document.removeEventListener("msfullscreenchange", ret.adjustFullscreenStyle);
 		
 		document.removeEventListener("touchmove", ret.sliding);
 		document.removeEventListener("touchend", ret.end_slide);
