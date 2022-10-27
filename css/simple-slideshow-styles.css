@@ -87,7 +87,7 @@
   display: block;
   width: 32px;
   height: 32px;    
-  background: rgba(0,0,0,.4) url(../img/arrows-alt_ffffff_64.png); 
+  background: rgba(0,0,0,.4) url(../img/arrows-alt_ffffff_64.webp); 
   -webkit-background-size: contain; 
   background-size: contain;
   position: absolute;
@@ -100,38 +100,38 @@
   opacity: .8;   
 }
 :-webkit-full-screen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     -webkit-background-size: contain;
     background-size: contain;
 }
 :-moz-full-screen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     background-size: contain;
 }
 :-ms-fullscreen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     background-size: contain;
 }
 :full-screen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     -webkit-background-size: contain;
     background-size: contain;
 }
 :-webkit-full-screen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     -webkit-background-size: contain;
     background-size: contain;
 }
 :-moz-full-screen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     background-size: contain;
 }
 :-ms-fullscreen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     background-size: contain;
 }
 :fullscreen .bss-fullscreen{
-    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
+    background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.webp);
     -webkit-background-size: contain;
     background-size: contain;
 }

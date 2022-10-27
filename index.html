@@ -29,7 +29,7 @@
 					<a href="https://github.com/Senryoku/">
 						<img
 							alt="GitHub Logo"
-							src="data/img/GitHub-Mark-Light-32px.png"
+							src="data/img/GitHub-Mark-Light-32px.webp"
 						/>
 						GitHub
 					</a>
@@ -38,7 +38,7 @@
 					<a href="https://twitter.com/Senryoku_">
 						<img
 							alt="Twitter Logo"
-							src="data/img/TwitterLogo.png"
+							src="data/img/TwitterLogo.webp"
 						/>
 						Twitter
 					</a>
@@ -49,7 +49,7 @@
 					>
 						<img
 							alt="YouTube Logo"
-							src="data/img/YouTube-icon-full_color.png"
+							src="data/img/YouTube-icon-full_color.webp"
 						/>
 						YouTube
 					</a>
@@ -57,136 +57,139 @@
 			</ul>
 		</navbar>
 
-		<content>				<script>document.querySelector('#index').classList.add('selected');</script>
-				
-				<h2>Welcome!</h2>
-				<p>
-					Here is my (Sen's) little homepage, where you can find some informations about me and my projects (not much, this is still really a Work in Progress). I'm a French programmer interested mostly in game development and rendering.
-					Use the tabs to learn more!
-				</p>
-				
-				<hr>
-				
-				<style>
-				#image-zoom {
-					position: relative;
-					margin: auto;
-					height: 450px;
-				}
-				
-				#image-zoom img {
-					position: absolute;
-					top: 0;
-					margin-left: auto;
-					margin-right: auto;
-					left: 0;
-					right: 0;
-					max-width: 100%;
-					height: 100%;
-					transition: all 1s;
-				}
-				
-				.fade {
-					opacity: 0;
-				}
-				
-				.image-collection {
-					display: none;
-				}
-				
-				.image-collection-nav {
-					text-align: center;
-				}
-				
-				.image-collection-nav-el {
-					display: inline-block;
-					
-					width: 10px;
-					height: 10px;
-					background-color: #555;
-					
-					-webkit-border-radius: 5px;
-					-moz-border-radius: 5px;
-					border-radius: 5px;
-					
-					margin: 15px;
-					
-					cursor: pointer;
-					cursor: hand;
-					
-					opacity: 0.5;
-					transition: all 0.5s;
-				}
-				
-				.image-collection-nav-el:hover {
-					background-color: #FFF;
-				}
-				
-				.image-selected {
-					background-color: #DDD;
-				}
-				</style>
-				
-				<div class="image-collection">
-					<img src="data/img/DeferredRendering/VHD_mini.png" />
-					<img src="data/img/DeferredRendering/Particles250_mini.png" />
-					<img src="data/img/SenBoy/SenBoy_Debug_1.png" />
-					<img src="data/img/water.png" />
-					<img src="data/img/Warhammer/Bloodstoker.jpg" />
-				</div>
-				
-				<div id="image-zoom">
-					<img src="" />
-					<img class="fade" src="" />
-				</div>
-				
-				<div class="image-collection-nav">
-				</div>
-				
-				<script>
-					let image_zoom = document.querySelector("#image-zoom");
-					let displayed_img = 0;
-					let col = document.querySelector(".image-collection");
-					let nav = document.querySelector(".image-collection-nav");
-					
-					for (var i = 0, len = col.children.length; i < len; i++) {
-						// Plug select funtion to all children
-						var el = document.createElement('div');
-						el.classList.add('image-collection-nav-el');
-						(function(index) {
-							el.onclick = function(){
-								  select(index);
-							}
-						})(i);
-						nav.appendChild(el);
-					}
-					
-					var rotate_timing = 5000;
-					var auto_rotate;
-					var current_image = 0;
-					
-					function select(idx)
-					{
-						image_zoom.children[displayed_img].classList.add('fade');
-						displayed_img = (displayed_img + 1) % 2;
-						image_zoom.children[displayed_img].classList.remove('fade');
-						
-						nav.children[current_image].classList.remove('image-selected');
-						current_image = idx;
-						nav.children[current_image].classList.add('image-selected');
-												
-						image_zoom.children[displayed_img].src = col.children[idx].getAttribute("src");
-						clearTimeout(auto_rotate);
-						auto_rotate = setTimeout(roll_image, rotate_timing);
-					}
-										
-					function roll_image()
-					{
-						select((current_image + 1) % col.children.length);
-					}
-					
-					select(0);
-				</script>
+		<content><script>
+	document.querySelector("#index").classList.add("selected");
+</script>
+
+<h2>Welcome!</h2>
+<p>
+	Here is my (Sen's) little homepage, where you can find some informations
+	about me and my projects (not much, this is still really a Work in
+	Progress). I'm a French programmer interested mostly in game development and
+	rendering. Use the tabs to learn more!
+</p>
+
+<hr />
+
+<style>
+	#image-zoom {
+		position: relative;
+		margin: auto;
+		height: 450px;
+	}
+
+	#image-zoom img {
+		position: absolute;
+		top: 0;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		max-width: 100%;
+		height: 100%;
+		transition: all 1s;
+	}
+
+	.fade {
+		opacity: 0;
+	}
+
+	.image-collection {
+		display: none;
+	}
+
+	.image-collection-nav {
+		text-align: center;
+	}
+
+	.image-collection-nav-el {
+		display: inline-block;
+
+		width: 10px;
+		height: 10px;
+		background-color: #555;
+
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+
+		margin: 15px;
+
+		cursor: pointer;
+		cursor: hand;
+
+		opacity: 0.5;
+		transition: all 0.5s;
+	}
+
+	.image-collection-nav-el:hover {
+		background-color: #fff;
+	}
+
+	.image-selected {
+		background-color: #ddd;
+	}
+</style>
+
+<div class="image-collection">
+	<img src="data/img/DeferredRendering/VHD_mini.webp" />
+	<img src="data/img/DeferredRendering/Particles250_mini.webp" />
+	<img src="data/img/SenBoy/SenBoy_Debug_1.webp" />
+	<img src="data/img/water.webp" />
+	<img src="data/img/Warhammer/Bloodstoker.jpg" />
+</div>
+
+<div id="image-zoom">
+	<img src="" />
+	<img class="fade" src="" />
+</div>
+
+<div class="image-collection-nav"></div>
+
+<script>
+	let image_zoom = document.querySelector("#image-zoom");
+	let displayed_img = 0;
+	let col = document.querySelector(".image-collection");
+	let nav = document.querySelector(".image-collection-nav");
+
+	for (var i = 0, len = col.children.length; i < len; i++) {
+		// Plug select funtion to all children
+		var el = document.createElement("div");
+		el.classList.add("image-collection-nav-el");
+		(function (index) {
+			el.onclick = function () {
+				select(index);
+			};
+		})(i);
+		nav.appendChild(el);
+	}
+
+	var rotate_timing = 5000;
+	var auto_rotate;
+	var current_image = 0;
+
+	function select(idx) {
+		image_zoom.children[displayed_img].classList.add("fade");
+		displayed_img = (displayed_img + 1) % 2;
+		image_zoom.children[displayed_img].classList.remove("fade");
+
+		nav.children[current_image].classList.remove("image-selected");
+		current_image = idx;
+		nav.children[current_image].classList.add("image-selected");
+
+		image_zoom.children[displayed_img].src =
+			col.children[idx].getAttribute("src");
+		clearTimeout(auto_rotate);
+		auto_rotate = setTimeout(roll_image, rotate_timing);
+	}
+
+	function roll_image() {
+		select((current_image + 1) % col.children.length);
+	}
+
+	select(0);
+</script>
+
 		</content>
 		
 		<footer>
