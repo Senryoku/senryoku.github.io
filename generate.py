@@ -12,13 +12,14 @@ def convert_to_webp(source):
     return destination
 
 
-paths = Path("data/img").glob("**/*.png")
-for path in paths:
-    destination = path.with_suffix(".webp")
-    if not os.path.isfile(destination):
-        image = Image.open(path)
-        image.save(destination, format="webp")
-        print(f"Created: {destination}")
+for ext in ["png", "jpg", "jpeg"]:
+    paths = Path("data/img").glob(f"**/*.{ext}")
+    for path in paths:
+        destination = path.with_suffix(".webp")
+        if not os.path.isfile(destination):
+            image = Image.open(path)
+            image.save(destination, format="webp")
+            print(f"Created: {destination}")
 
 # Makes sure every folder in path exists
 

@@ -37,7 +37,7 @@ function fullscreen(el) {
 	'img_url' (required) must be an array containing all the images to be displayed (in order).
 	'options' (optional) must be an object with the desired values for the parameters listed at the begining of the function.
 	Example:
-		init_slider('#my_slider', ['0.jpg', '1.jpg', ...], {autoSlideLoop: true});
+		init_slider('#my_slider', ['0.webp', '1.webp', ...], {autoSlideLoop: true});
 */
 function init_slider(selector, imgUrls, options) {
 	var ret = {};
